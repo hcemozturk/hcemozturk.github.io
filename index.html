@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H. Cem Ozturk</title>
+    <meta
+      name="description"
+      content="Personal website of Cem Ozturk, software engineer with 10+ years building iOS and macOS products at scale."
+    />
+    <style>
+      :root {
+        --bg: #f5f6f7;
+        --text: #111;
+        --muted: #5c5f66;
+        --line: #d9dde3;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+          "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 55%);
+        color: var(--text);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+
+      main {
+        width: min(680px, 92vw);
+        padding: 2.5rem 1.25rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 3rem);
+        letter-spacing: -0.03em;
+      }
+
+      p {
+        margin: 0.9rem 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 1.05rem;
+      }
+
+      nav {
+        margin-top: 1.7rem;
+        padding-top: 1.2rem;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      a {
+        color: var(--text);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+
+      a:hover {
+        text-decoration-thickness: 2px;
+      }
+
+      .emphasis {
+        font-weight: 600;
+        text-decoration-thickness: 2px;
+        animation: glow 2.6s ease-in-out infinite;
+      }
+
+      .emphasis-banking {
+        color: #c1121f;
+      }
+
+      .emphasis-tools {
+        color: #cc5500;
+        animation-delay: 1.3s;
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          opacity: 0.85;
+          text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        }
+        50% {
+          opacity: 1;
+          text-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+        }
+      }
+
+      .leettrack-footer {
+        margin-top: 1.8rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.95rem;
+        text-decoration: none;
+        display: block;
+      }
+
+      .leettrack-footer-inner {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: transform 180ms ease, color 180ms ease;
+      }
+
+      .leettrack-footer:hover .leettrack-footer-inner,
+      .leettrack-footer:focus-visible .leettrack-footer-inner {
+        color: var(--text);
+        transform: translateY(-1px);
+      }
+
+      .leettrack-icon-wrap {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #eceff3;
+        flex: 0 0 auto;
+      }
+
+      .leettrack-icon {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .leettrack-icon-dark {
+        display: none;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .leettrack-icon-light {
+          display: none;
+        }
+
+        .leettrack-icon-dark {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>H. Cem Ozturk</h1>
+      <p>
+        Software engineer with 10+ years building iOS and macOS products at scale, from
+        <a
+          class="emphasis emphasis-banking"
+          href="https://www.akbank.com/en"
+          target="_blank"
+          rel="noopener noreferrer"
+          >banking apps</a
+        >
+        with 1.5M monthly users to
+        <a
+          class="emphasis emphasis-tools"
+          href="https://zeplin.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          >developer tools</a
+        >
+        used by 5M+ people.
+      </p>
+      <nav aria-label="Social links">
+        <a href="https://github.com/hcemozturk" target="_blank" rel="noopener noreferrer"
+          >GitHub</a
+        >
+        <a href="https://www.linkedin.com/in/hcemozturk/" target="_blank" rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        <a id="email-link" href="#">Email</a>
+      </nav>
+      <a class="leettrack-footer" href="leettrack/" aria-label="Open LeetTrack page">
+        <span class="leettrack-footer-inner">
+          <span class="leettrack-icon-wrap" aria-hidden="true">
+            <img
+              class="leettrack-icon leettrack-icon-light"
+              src="assets/leettrack/leettrack-icon-light@2x.png"
+              alt=""
+              loading="lazy"
+            />
+            <img
+              class="leettrack-icon leettrack-icon-dark"
+              src="assets/leettrack/leettrack-icon-dark@2x.png"
+              alt=""
+              loading="lazy"
+            />
+          </span>
+          <span><strong>LeetTrack</strong> - upcoming app to track LeetCode progress.</span>
+        </span>
+      </a>
+    </main>
+    <script>
+      const emailUser = "hcemozturk+page";
+      const emailDomain = "gmail.com";
+      const email = `${emailUser}@${emailDomain}`;
+      const emailLink = document.getElementById("email-link");
+      emailLink.setAttribute("href", `mailto:${email}`);
+    </script>
+  </body>
+</html>

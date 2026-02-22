@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeetTrack</title>
+    <meta
+      name="description"
+      content="LeetTrack is an upcoming iOS app to track LeetCode progress, streaks, and widgets."
+    />
+    <style>
+      :root {
+        --bg: #f5f6f7;
+        --surface: #ffffff;
+        --text: #111;
+        --muted: #666a72;
+        --line: #dde1e7;
+        --accent: #e57a00;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+          "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 60%);
+      }
+
+      main {
+        width: min(1000px, 92vw);
+        margin: 0 auto;
+        padding: 2rem 0 3rem;
+      }
+
+      .top-link {
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .top-link:hover {
+        color: var(--text);
+      }
+
+      .hero {
+        margin-top: 1.2rem;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 1.25rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .app-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 18px;
+        overflow: hidden;
+        flex: 0 0 auto;
+      }
+
+      .icon-light,
+      .icon-dark {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .icon-dark {
+        display: none;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.75rem, 4vw, 2.35rem);
+        letter-spacing: -0.02em;
+      }
+
+      .subtitle {
+        margin: 0.25rem 0 0;
+        color: var(--muted);
+      }
+
+      .coming {
+        margin-top: 0.5rem;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      h2 {
+        margin: 2rem 0 0.85rem;
+        font-size: 1.15rem;
+      }
+
+      .screens {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.7rem;
+      }
+
+      .shot {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        width: min(100%, 200px);
+        justify-self: center;
+      }
+
+      .shot img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .privacy {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .privacy a {
+        color: var(--text);
+        text-underline-offset: 3px;
+      }
+
+      @media (max-width: 900px) {
+        .screens {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .hero {
+          padding: 1rem;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .icon-light {
+          display: none;
+        }
+
+        .icon-dark {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="top-link" href="../">&larr; Back to home</a>
+
+      <section class="hero">
+        <div class="app-icon" aria-hidden="true">
+          <img
+            class="icon-light"
+            src="../assets/leettrack/leettrack-icon-light@2x.png"
+            alt=""
+            loading="lazy"
+          />
+          <img
+            class="icon-dark"
+            src="../assets/leettrack/leettrack-icon-dark@2x.png"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <h1>LeetTrack</h1>
+          <p class="subtitle">Track your LeetCode progress, streaks, and widgets on iOS.</p>
+          <div class="coming">Coming soon</div>
+        </div>
+      </section>
+
+      <h2>Screenshots</h2>
+      <section class="screens" aria-label="LeetTrack screenshots">
+        <figure class="shot">
+          <img
+            src="../assets/leettrack/screenshots/1_dashboard.PNG"
+            alt="LeetTrack dashboard"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="shot">
+          <img
+            src="../assets/leettrack/screenshots/2_badgedetail.PNG"
+            alt="LeetTrack badge detail"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="shot">
+          <img
+            src="../assets/leettrack/screenshots/3_widgets.PNG"
+            alt="LeetTrack widgets"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="shot">
+          <img
+            src="../assets/leettrack/screenshots/4_lockscreenwidgets.PNG"
+            alt="LeetTrack lock screen widgets"
+            loading="lazy"
+          />
+        </figure>
+      </section>
+
+      <section class="privacy">
+        <a href="privacy.html">Privacy Policy</a>
+      </section>
+    </main>
+  </body>
+</html>
