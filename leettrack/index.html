@@ -6,16 +6,33 @@
     <title>LeetTrack</title>
     <meta
       name="description"
-      content="LeetTrack is an upcoming iOS app to track LeetCode progress, streaks, and widgets."
+      content="LeetTrack: Your personal LeetCode companion. Track streaks, monitor progress, and stay motivated with a customizable dashboard and 12 widgets."
     />
+    <link rel="icon" type="image/png" href="../assets/leettrack/optimized/leettrack-icon-light-216.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/leettrack/optimized/leettrack-icon-light-216.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/leettrack/optimized/leettrack-icon-light-216.png" />
+    <link rel="apple-touch-icon" href="../assets/leettrack/optimized/leettrack-icon-light-216.png" />
     <style>
       :root {
-        --bg: #f5f6f7;
-        --surface: #ffffff;
-        --text: #111;
-        --muted: #666a72;
-        --line: #dde1e7;
-        --accent: #e57a00;
+        --bg: #f2f2f7;
+        --surface: rgba(255, 255, 255, 0.7);
+        --text: #000000;
+        --muted: rgba(60, 60, 67, 0.6);
+        --line: rgba(60, 60, 67, 0.29);
+        --accent: #ff9500;
+        --bokeh-opacity: 0.35;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #000000;
+          --surface: rgba(28, 28, 30, 0.7);
+          --text: #ffffff;
+          --muted: rgba(235, 235, 245, 0.6);
+          --line: rgba(84, 84, 88, 0.6);
+          --accent: #ff9f0a;
+          --bokeh-opacity: 0.4;
+        }
       }
 
       * {
@@ -27,10 +44,136 @@
         font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
           "Avenir Next", Avenir, "Segoe UI", sans-serif;
         color: var(--text);
-        background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 60%);
+        background: var(--bg);
+        overflow-x: hidden;
+      }
+
+      /* Animated bokeh background */
+      .bokeh {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .bokeh-dot {
+        position: absolute;
+        border-radius: 50%;
+        opacity: var(--bokeh-opacity);
+        will-change: transform;
+      }
+
+      .bokeh-dot.orange {
+        width: 350px;
+        height: 350px;
+        background: #ff9500;
+        filter: blur(100px);
+        top: -5%;
+        left: 10%;
+        animation: float-1 20s ease-in-out infinite;
+      }
+
+      .bokeh-dot.teal {
+        width: 300px;
+        height: 300px;
+        background: #30b0c7;
+        filter: blur(90px);
+        top: 30%;
+        right: -5%;
+        animation: float-2 18s ease-in-out infinite;
+        animation-delay: -4s;
+      }
+
+      .bokeh-dot.indigo {
+        width: 250px;
+        height: 250px;
+        background: #5856d6;
+        filter: blur(110px);
+        bottom: 20%;
+        left: -8%;
+        animation: float-3 22s ease-in-out infinite;
+        animation-delay: -8s;
+      }
+
+      .bokeh-dot.yellow {
+        width: 200px;
+        height: 200px;
+        background: #ffcc00;
+        filter: blur(80px);
+        top: 60%;
+        right: 15%;
+        animation: float-4 16s ease-in-out infinite;
+        animation-delay: -2s;
+      }
+
+      .bokeh-dot.green {
+        width: 280px;
+        height: 280px;
+        background: #34c759;
+        filter: blur(100px);
+        bottom: -10%;
+        left: 40%;
+        animation: float-5 24s ease-in-out infinite;
+        animation-delay: -10s;
+      }
+
+      .bokeh-dot.red {
+        width: 220px;
+        height: 220px;
+        background: #ff3b30;
+        filter: blur(90px);
+        top: 10%;
+        right: 30%;
+        animation: float-6 19s ease-in-out infinite;
+        animation-delay: -6s;
+      }
+
+      @keyframes float-1 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(60px, 80px) scale(1.1); }
+        66% { transform: translate(-40px, 40px) scale(0.95); }
+      }
+
+      @keyframes float-2 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(-70px, -50px) scale(1.05); }
+        66% { transform: translate(30px, -80px) scale(0.9); }
+      }
+
+      @keyframes float-3 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(80px, -60px) scale(1.08); }
+        66% { transform: translate(50px, 50px) scale(0.92); }
+      }
+
+      @keyframes float-4 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(-50px, 70px) scale(1.12); }
+        66% { transform: translate(60px, -30px) scale(0.88); }
+      }
+
+      @keyframes float-5 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(40px, -90px) scale(1.06); }
+        66% { transform: translate(-60px, -40px) scale(0.94); }
+      }
+
+      @keyframes float-6 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(-80px, 40px) scale(0.9); }
+        66% { transform: translate(50px, 70px) scale(1.1); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .bokeh-dot {
+          animation: none !important;
+        }
       }
 
       main {
+        position: relative;
+        z-index: 1;
         width: min(1000px, 92vw);
         margin: 0 auto;
         padding: 2rem 0 3rem;
@@ -48,12 +191,13 @@
       .hero {
         margin-top: 1.2rem;
         background: var(--surface);
-        border: 1px solid var(--line);
         border-radius: 20px;
         padding: 1.25rem;
         display: flex;
         gap: 1rem;
         align-items: center;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
       }
 
       .app-icon {
@@ -97,24 +241,57 @@
         font-size: 1.15rem;
       }
 
+      .features {
+        margin-top: 1.4rem;
+        padding: 1rem;
+        background: var(--surface);
+        border-radius: 14px;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+      }
+
+      .features h2 {
+        margin-top: 0;
+      }
+
+      .features ul {
+        margin: 0.2rem 0 0;
+        padding-left: 1.2rem;
+      }
+
+      .features li {
+        margin: 0.55rem 0;
+        line-height: 1.5;
+      }
+
       .screens {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0.7rem;
+        margin-top: 1.4rem;
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.5rem;
+        scrollbar-width: none;
+      }
+
+      .screens::-webkit-scrollbar {
+        display: none;
       }
 
       .shot {
-        background: var(--surface);
-        border: 1px solid var(--line);
+        margin: 0;
         border-radius: 14px;
         overflow: hidden;
-        width: min(100%, 200px);
-        justify-self: center;
+        flex: 0 0 200px;
+        aspect-ratio: 9 / 19.5;
+        scroll-snap-align: start;
       }
 
       .shot img {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
         display: block;
       }
 
@@ -129,10 +306,37 @@
         text-underline-offset: 3px;
       }
 
-      @media (max-width: 900px) {
-        .screens {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+      .legal-links {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .legal-links span {
+        color: var(--muted);
+      }
+
+      .disclaimer {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        text-align: center;
+      }
+
+      .disclaimer small {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .iggy {
+        position: fixed;
+        bottom: 0;
+        right: 24px;
+        width: 64px;
+        height: 64px;
+        z-index: 10;
+        pointer-events: none;
+        filter: drop-shadow(0 -2px 6px rgba(0, 0, 0, 0.12));
       }
 
       @media (max-width: 760px) {
@@ -153,6 +357,15 @@
     </style>
   </head>
   <body>
+    <div class="bokeh" aria-hidden="true">
+      <div class="bokeh-dot orange"></div>
+      <div class="bokeh-dot teal"></div>
+      <div class="bokeh-dot indigo"></div>
+      <div class="bokeh-dot yellow"></div>
+      <div class="bokeh-dot green"></div>
+      <div class="bokeh-dot red"></div>
+    </div>
+
     <main>
       <a class="top-link" href="../">&larr; Back to home</a>
 
@@ -160,59 +373,84 @@
         <div class="app-icon" aria-hidden="true">
           <img
             class="icon-light"
-            src="../assets/leettrack/leettrack-icon-light@2x.png"
+            src="../assets/leettrack/optimized/leettrack-icon-light-216.png"
             alt=""
             loading="lazy"
           />
           <img
             class="icon-dark"
-            src="../assets/leettrack/leettrack-icon-dark@2x.png"
+            src="../assets/leettrack/optimized/leettrack-icon-dark-216.png"
             alt=""
             loading="lazy"
           />
         </div>
         <div>
           <h1>LeetTrack</h1>
-          <p class="subtitle">Track your LeetCode progress, streaks, and widgets on iOS.</p>
+          <p class="subtitle">LeetCode Widgets &amp; Analytics</p>
           <div class="coming">Coming soon</div>
         </div>
       </section>
 
-      <h2>Screenshots</h2>
       <section class="screens" aria-label="LeetTrack screenshots">
         <figure class="shot">
-          <img
-            src="../assets/leettrack/screenshots/1_dashboard.PNG"
-            alt="LeetTrack dashboard"
-            loading="lazy"
-          />
+          <img src="assets/screenshot-1.jpg" alt="LeetTrack dashboard overview" loading="lazy" />
         </figure>
         <figure class="shot">
-          <img
-            src="../assets/leettrack/screenshots/2_badgedetail.PNG"
-            alt="LeetTrack badge detail"
-            loading="lazy"
-          />
+          <img src="assets/screenshot-2.jpg" alt="LeetTrack insights and heatmap" loading="lazy" />
         </figure>
         <figure class="shot">
-          <img
-            src="../assets/leettrack/screenshots/3_widgets.PNG"
-            alt="LeetTrack widgets"
-            loading="lazy"
-          />
+          <img src="assets/screenshot-3.jpg" alt="LeetTrack widgets" loading="lazy" />
         </figure>
         <figure class="shot">
-          <img
-            src="../assets/leettrack/screenshots/4_lockscreenwidgets.PNG"
-            alt="LeetTrack lock screen widgets"
-            loading="lazy"
-          />
+          <img src="assets/screenshot-4.jpg" alt="LeetTrack customizable dashboard" loading="lazy" />
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshot-5.jpg" alt="LeetTrack drag and drop" loading="lazy" />
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshot-6.jpg" alt="LeetTrack smart reminders" loading="lazy" />
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshot-7.jpg" alt="LeetTrack badge sharing" loading="lazy" />
         </figure>
       </section>
 
+      <section class="features" aria-label="LeetTrack features">
+        <h2>Features</h2>
+        <ul>
+          <li>📊 <strong>Customizable Dashboard</strong> - 20 cards, drag, drop, and resize</li>
+          <li>📱 <strong>12 Widgets</strong> - Home Screen, Lock Screen, and Iggy your streak companion</li>
+          <li>🔥 <strong>Smart Reminders</strong> - Streak-aware alerts that nudge when you need them</li>
+          <li>🏆 <strong>Share Your Milestones</strong> - Interactive badge views and share-ready images</li>
+          <li>🔒 <strong>Privacy First</strong> - Free, no account, no analytics servers</li>
+        </ul>
+      </section>
+
       <section class="privacy">
-        <a href="privacy.html">Privacy Policy</a>
+        <div class="legal-links">
+          <a href="mailto:leettrackapp@gmail.com">Contact</a>
+          <span aria-hidden="true">|</span>
+          <a href="privacy.html">Privacy Policy</a>
+          <span aria-hidden="true">|</span>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+      </section>
+
+      <section class="disclaimer">
+        <p>
+          <small>
+            LeetTrack is an independent app not affiliated with LeetCode.
+            LeetCode® is a registered trademark of LeetCode LLC.
+          </small>
+        </p>
       </section>
     </main>
+
+    <img
+      class="iggy"
+      src="assets/iggy.png"
+      srcset="assets/iggy.png 1x, assets/iggy@2x.png 2x"
+      alt="Iggy, the LeetTrack streak mascot"
+    />
   </body>
 </html>

@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LeetTrack Privacy Policy</title>
     <meta name="description" content="Privacy Policy for LeetTrack" />
+    <link rel="icon" type="image/png" href="../assets/leettrack/optimized/leettrack-icon-light-216.png" />
+    <link rel="apple-touch-icon" href="../assets/leettrack/optimized/leettrack-icon-light-216.png" />
     <style>
       :root {
-        --bg: #f7f8fa;
-        --text: #121212;
-        --muted: #656a73;
-        --line: #dde1e7;
+        --bg: #f2f2f7;
+        --surface: #ffffff;
+        --text: #000000;
+        --muted: rgba(60, 60, 67, 0.6);
+        --line: rgba(60, 60, 67, 0.29);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #000000;
+          --surface: #1c1c1e;
+          --text: #ffffff;
+          --muted: rgba(235, 235, 245, 0.6);
+          --line: rgba(84, 84, 88, 0.6);
+        }
       }
 
       * {
@@ -43,9 +56,13 @@
       article {
         margin-top: 1rem;
         padding: 1.25rem;
-        background: #fff;
+        background: var(--surface);
         border: 1px solid var(--line);
         border-radius: 14px;
+      }
+
+      a {
+        color: var(--text);
       }
 
       h1 {
