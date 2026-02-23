@@ -8,6 +8,10 @@
       name="description"
       content="LeetTrack is an upcoming iOS app to track LeetCode progress, streaks, and widgets."
     />
+    <link rel="icon" type="image/png" href="../assets/leettrack/optimized/leettrack-icon-light-216.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/leettrack/optimized/leettrack-icon-light-216.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/leettrack/optimized/leettrack-icon-light-216.png" />
+    <link rel="apple-touch-icon" href="../assets/leettrack/optimized/leettrack-icon-light-216.png" />
     <style>
       :root {
         --bg: #f5f6f7;
@@ -97,6 +101,28 @@
         font-size: 1.15rem;
       }
 
+      .features {
+        margin-top: 1.4rem;
+        padding: 1rem;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+      }
+
+      .features h2 {
+        margin-top: 0;
+      }
+
+      .features ul {
+        margin: 0.2rem 0 0;
+        padding-left: 1.2rem;
+      }
+
+      .features li {
+        margin: 0.55rem 0;
+        line-height: 1.5;
+      }
+
       .screens {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -110,11 +136,13 @@
         overflow: hidden;
         width: min(100%, 200px);
         justify-self: center;
+        aspect-ratio: 9 / 19.5; /* iPhone aspect ratio */
       }
 
       .shot img {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
         display: block;
       }
 
@@ -133,6 +161,18 @@
         display: flex;
         gap: 0.75rem;
         flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .disclaimer {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        text-align: center;
+      }
+
+      .disclaimer small {
+        color: var(--muted);
+        font-size: 0.85rem;
       }
 
       @media (max-width: 900px) {
@@ -179,9 +219,22 @@
         </div>
         <div>
           <h1>LeetTrack</h1>
-          <p class="subtitle">Track your LeetCode progress, streaks, and widgets on iOS.</p>
+          <p class="subtitle">
+            Your personal LeetCode companion. Track streaks, monitor progress, stay motivated.
+          </p>
           <div class="coming">Coming soon</div>
         </div>
+      </section>
+
+      <section class="features" aria-label="LeetTrack features">
+        <h2>Features</h2>
+        <ul>
+          <li>🔥 <strong>Streak Tracking</strong> - Never miss a day with smart notifications</li>
+          <li>📊 <strong>Customizable Dashboard</strong> - Arrange your stats your way</li>
+          <li>🏆 <strong>Badge Collection</strong> - Track &amp; share all your achievements</li>
+          <li>📱 <strong>Beautiful Widgets</strong> - Home screen &amp; lock screen support</li>
+          <li>🔒 <strong>Privacy First</strong> - All data stays on your device</li>
+        </ul>
       </section>
 
       <h2>Screenshots</h2>
@@ -218,11 +271,22 @@
 
       <section class="privacy">
         <div class="legal-links">
+          <a href="mailto:leettrackapp@gmail.com">Contact</a>
+          <span aria-hidden="true">|</span>
           <a href="privacy.html">Privacy Policy</a>
           <span aria-hidden="true">|</span>
           <a href="terms.html">Terms &amp; Conditions</a>
         </div>
       </section>
+
+      <section class="disclaimer">
+        <p>
+          <small>
+            LeetTrack is an independent app not affiliated with LeetCode. 
+            LeetCode® is a registered trademark of LeetCode LLC.
+          </small>
+        </p>
+    </section>
     </main>
   </body>
 </html>
