@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Headway</title>
+    <meta
+      name="description"
+      content="Headway is a focus timer app for planning deep work sessions and building momentum."
+    />
+    <link rel="icon" type="image/png" href="../assets/leettrack/optimized/headway-icon-light-216.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/leettrack/optimized/headway-icon-light-216.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/leettrack/optimized/headway-icon-light-216.png" />
+    <link rel="apple-touch-icon" href="../assets/leettrack/optimized/headway-icon-light-216.png" />
+    <style>
+      :root {
+        --bg: #f5f7f6;
+        --surface: #ffffff;
+        --text: #121414;
+        --muted: #616a67;
+        --line: #dbe3df;
+        --accent: #1f8f6a;
+        --accent-soft: #c98739;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+          "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 60%);
+      }
+
+      main {
+        width: min(860px, 92vw);
+        margin: 0 auto;
+        padding: 2rem 0 3rem;
+      }
+
+      .top-link {
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .top-link:hover {
+        color: var(--text);
+      }
+
+      .hero {
+        margin-top: 1.2rem;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 1.35rem;
+      }
+
+      .app-row {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+      }
+
+      .app-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 18px;
+        overflow: hidden;
+        flex: 0 0 auto;
+      }
+
+      .icon-light,
+      .icon-dark {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .icon-dark {
+        display: none;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.75rem, 4vw, 2.35rem);
+        letter-spacing: -0.02em;
+      }
+
+      .app-title {
+        font-weight: 300;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .subtitle {
+        margin: 0.25rem 0 0;
+        color: var(--muted);
+      }
+
+      .coming {
+        margin-top: 0.55rem;
+        color: var(--accent-soft);
+        font-weight: 600;
+      }
+
+      .card {
+        margin-top: 1.3rem;
+        padding: 1rem;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+      }
+
+      .card h2 {
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      ul {
+        margin: 0.75rem 0 0;
+        padding-left: 1.2rem;
+      }
+
+      li {
+        margin: 0.5rem 0;
+        line-height: 1.5;
+      }
+
+      .legal {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .legal-links {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .legal-links a {
+        color: var(--text);
+        text-underline-offset: 3px;
+      }
+
+      .screens {
+        margin-top: 1.4rem;
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.5rem;
+        scrollbar-width: none;
+      }
+
+      .screens::-webkit-scrollbar {
+        display: none;
+      }
+
+      .shot {
+        margin: 0;
+        border-radius: 14px;
+        overflow: hidden;
+        flex: 0 0 200px;
+        aspect-ratio: 9 / 19.5;
+        scroll-snap-align: start;
+      }
+
+      .shot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      @media (max-width: 760px) {
+        .hero {
+          padding: 1rem;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .icon-light {
+          display: none;
+        }
+
+        .icon-dark {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="top-link" href="../">&larr; Back to home</a>
+
+      <section class="hero">
+        <div class="app-row">
+          <div class="app-icon" aria-hidden="true">
+            <img
+              class="icon-light"
+              src="../assets/leettrack/optimized/headway-icon-light-216.png"
+              alt=""
+              loading="lazy"
+            />
+            <img
+              class="icon-dark"
+              src="../assets/leettrack/optimized/headway-icon-dark-216.png"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <h1 class="app-title">Headway</h1>
+            <p class="subtitle">
+              A focus timer that helps you plan deep work sessions and stay consistent.
+            </p>
+            <div class="coming">Coming soon</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screens" aria-label="Headway screenshots">
+        <figure class="shot">
+          <img
+            src="../assets/headway/screenshots/1_timer_light.jpg"
+            alt="Headway timer screen in light mode"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="shot">
+          <img
+            src="../assets/headway/screenshots/2_soundboard.jpg"
+            alt="Headway soundboard screen"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="shot">
+          <img
+            src="../assets/headway/screenshots/3_insights.jpg"
+            alt="Headway insights screen"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="shot">
+          <img
+            src="../assets/headway/screenshots/4_timer_dark.jpg"
+            alt="Headway timer screen in dark mode"
+            loading="lazy"
+          />
+        </figure>
+      </section>
+
+      <section class="card" aria-label="Headway features">
+        <h2>Planned Features</h2>
+        <ul>
+          <li>Flexible focus and break sessions</li>
+          <li>Simple daily planning with session goals</li>
+          <li>Progress insights to reinforce momentum</li>
+          <li>Calm, distraction-free timer experience</li>
+        </ul>
+      </section>
+
+      <section class="legal">
+        <div class="legal-links">
+          <a href="mailto:leettrackapp@gmail.com">Contact</a>
+          <span aria-hidden="true">|</span>
+          <a href="privacy.html">Privacy Policy</a>
+          <span aria-hidden="true">|</span>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

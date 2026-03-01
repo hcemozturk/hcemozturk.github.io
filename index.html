@@ -81,36 +81,49 @@
       color: #f69833;
     }
 
-    .leettrack-footer {
+    .app-links {
       margin-top: 1.8rem;
       padding-top: 1rem;
       border-top: 1px solid var(--line);
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .app-link {
       color: var(--muted);
       font-size: 0.95rem;
       text-decoration: none;
       display: block;
     }
 
-    .leettrack-footer-inner {
+    .app-link-inner {
       display: flex;
       align-items: center;
       gap: 0.75rem;
       transition: transform 180ms ease, color 180ms ease;
     }
 
-    .leettrack-footer:hover .leettrack-footer-inner,
-    .leettrack-footer:focus-visible .leettrack-footer-inner {
+    .app-link:hover .app-link-inner,
+    .app-link:focus-visible .app-link-inner {
       color: var(--text);
       transform: translateY(-1px);
     }
 
-    .leettrack-icon-wrap {
+    .leettrack-icon-wrap,
+    .headway-icon-wrap {
       width: 30px;
       height: 30px;
       border-radius: 8px;
       overflow: hidden;
-      background: #eceff3;
       flex: 0 0 auto;
+    }
+
+    .leettrack-icon-wrap {
+      background: #eceff3;
+    }
+
+    .headway-icon-wrap {
+      background: #e9f2ed;
     }
 
     .leettrack-icon {
@@ -120,18 +133,9 @@
       object-fit: cover;
     }
 
-    .leettrack-icon-dark {
+    .leettrack-icon-dark,
+    .headway-icon-dark {
       display: none;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .leettrack-icon-light {
-        display: none;
-      }
-
-      .leettrack-icon-dark {
-        display: block;
-      }
     }
 
     /* Zeplin Animation */
@@ -327,6 +331,24 @@
         transform: translate(var(--dx), var(--dy)) scale(1.2) rotate(var(--dr));
       }
     }
+
+    @media (prefers-color-scheme: dark) {
+      .leettrack-icon-light {
+        display: none;
+      }
+
+      .leettrack-icon-dark {
+        display: block;
+      }
+
+      .headway-icon-light {
+        display: none;
+      }
+
+      .headway-icon-dark {
+        display: block;
+      }
+    }
   </style>
 </head>
 
@@ -347,17 +369,30 @@
       <a href="https://www.linkedin.com/in/hcemozturk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a id="email-link" href="#">Email</a>
     </nav>
-    <a class="leettrack-footer" href="leettrack/" aria-label="Open LeetTrack page">
-      <span class="leettrack-footer-inner">
-        <span class="leettrack-icon-wrap" aria-hidden="true">
-          <img class="leettrack-icon leettrack-icon-light" src="assets/leettrack/optimized/leettrack-icon-light-216.png"
-            alt="" loading="lazy" />
-          <img class="leettrack-icon leettrack-icon-dark" src="assets/leettrack/optimized/leettrack-icon-dark-216.png"
-            alt="" loading="lazy" />
+    <section class="app-links" aria-label="App pages">
+      <a class="app-link" href="leettrack/" aria-label="Open LeetTrack page">
+        <span class="app-link-inner">
+          <span class="leettrack-icon-wrap" aria-hidden="true">
+            <img class="leettrack-icon leettrack-icon-light" src="assets/leettrack/optimized/leettrack-icon-light-216.png"
+              alt="" loading="lazy" />
+            <img class="leettrack-icon leettrack-icon-dark" src="assets/leettrack/optimized/leettrack-icon-dark-216.png"
+              alt="" loading="lazy" />
+          </span>
+          <span><strong>LeetTrack</strong> - Your personal LeetCode companion.</span>
         </span>
-        <span><strong>LeetTrack</strong> - Your personal LeetCode companion.</span>
-      </span>
-    </a>
+      </a>
+      <a class="app-link" href="headway/" aria-label="Open Headway page">
+        <span class="app-link-inner">
+          <span class="headway-icon-wrap" aria-hidden="true">
+            <img class="leettrack-icon headway-icon-light" src="assets/leettrack/optimized/headway-icon-light-216.png"
+              alt="" loading="lazy" />
+            <img class="leettrack-icon headway-icon-dark" src="assets/leettrack/optimized/headway-icon-dark-216.png"
+              alt="" loading="lazy" />
+          </span>
+          <span><strong>Headway</strong> - Focus timer with app blocking and ambient soundscapes.</span>
+        </span>
+      </a>
+    </section>
   </main>
   <div id="zeplin-container">
     <img src="assets/zeplin.svg" id="zeplin-image" alt="Zeplin" />
