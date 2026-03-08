@@ -1,211 +1,554 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>H. Cem Ozturk</title>
-    <meta
-      name="description"
-      content="Personal website of Cem Ozturk, software engineer with 10+ years building iOS and macOS products at scale."
-    />
-    <style>
-      :root {
-        --bg: #f5f6f7;
-        --text: #111;
-        --muted: #5c5f66;
-        --line: #d9dde3;
-      }
 
-      * {
-        box-sizing: border-box;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H. Cem Ozturk</title>
+  <meta name="description"
+    content="Personal website of Cem Ozturk, software engineer with 10+ years building iOS and macOS products at scale." />
+  <style>
+    :root {
+      --bg: #f5f6f7;
+      --text: #111;
+      --muted: #5c5f66;
+      --line: #d9dde3;
+    }
 
-      body {
-        margin: 0;
-        font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
-          "Avenir Next", Avenir, "Segoe UI", sans-serif;
-        background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 55%);
-        color: var(--text);
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-      }
+    * {
+      box-sizing: border-box;
+    }
 
-      main {
-        width: min(680px, 92vw);
-        padding: 2.5rem 1.25rem;
-      }
+    body {
+      margin: 0;
+      font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+        "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 55%);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+    }
 
-      h1 {
-        margin: 0;
-        font-size: clamp(2rem, 5vw, 3rem);
-        letter-spacing: -0.03em;
-      }
+    main {
+      width: min(680px, 92vw);
+      padding: 2.5rem 1.25rem;
+    }
 
-      p {
-        margin: 0.9rem 0 0;
-        color: var(--muted);
-        line-height: 1.6;
-        font-size: 1.05rem;
-      }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: -0.03em;
+    }
 
-      nav {
-        margin-top: 1.7rem;
-        padding-top: 1.2rem;
-        border-top: 1px solid var(--line);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
+    p {
+      margin: 0.9rem 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
 
-      a {
-        color: var(--text);
-        text-decoration-thickness: 1px;
-        text-underline-offset: 3px;
-      }
+    nav {
+      margin-top: 1.7rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-      a:hover {
-        text-decoration-thickness: 2px;
-      }
+    a {
+      color: var(--text);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
 
-      .emphasis {
-        font-weight: 600;
-        text-decoration-thickness: 2px;
-        animation: glow 2.6s ease-in-out infinite;
-      }
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
 
-      .emphasis-banking {
-        color: #c1121f;
-      }
+    .emphasis {
+      position: relative;
+      font-weight: 600;
+      text-decoration: none;
+    }
 
-      .emphasis-tools {
-        color: #cc5500;
-        animation-delay: 1.3s;
-      }
+    .emphasis-banking {
+      color: #dc0005;
+    }
 
-      @keyframes glow {
-        0%,
-        100% {
-          opacity: 0.85;
-          text-shadow: 0 0 0 rgba(0, 0, 0, 0);
-        }
-        50% {
-          opacity: 1;
-          text-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
-        }
-      }
+    .emphasis-tools {
+      color: #f69833;
+    }
 
-      .leettrack-footer {
-        margin-top: 1.8rem;
-        padding-top: 1rem;
-        border-top: 1px solid var(--line);
-        color: var(--muted);
-        font-size: 0.95rem;
-        text-decoration: none;
-        display: block;
-      }
+    .leettrack-footer {
+      margin-top: 1.8rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: block;
+    }
 
-      .leettrack-footer-inner {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        transition: transform 180ms ease, color 180ms ease;
-      }
+    .leettrack-footer-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: transform 180ms ease, color 180ms ease;
+    }
 
-      .leettrack-footer:hover .leettrack-footer-inner,
-      .leettrack-footer:focus-visible .leettrack-footer-inner {
-        color: var(--text);
-        transform: translateY(-1px);
-      }
+    .leettrack-footer:hover .leettrack-footer-inner,
+    .leettrack-footer:focus-visible .leettrack-footer-inner {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
 
-      .leettrack-icon-wrap {
-        width: 30px;
-        height: 30px;
-        border-radius: 8px;
-        overflow: hidden;
-        background: #eceff3;
-        flex: 0 0 auto;
-      }
+    .leettrack-icon-wrap {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #eceff3;
+      flex: 0 0 auto;
+    }
 
-      .leettrack-icon {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+    .leettrack-icon {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-      .leettrack-icon-dark {
+    .leettrack-icon-dark {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .leettrack-icon-light {
         display: none;
       }
 
-      @media (prefers-color-scheme: dark) {
-        .leettrack-icon-light {
-          display: none;
+      .leettrack-icon-dark {
+        display: block;
+      }
+    }
+
+    /* Zeplin Animation */
+    #zeplin-container {
+      position: fixed;
+      top: 20%;
+      left: -200px;
+      width: 60px;
+      pointer-events: none;
+      z-index: 1000;
+      visibility: hidden;
+      transition: visibility 0s 15s;
+    }
+
+    #zeplin-container.animating {
+      visibility: visible;
+      transition: none;
+      animation: zeplin-glide 15s linear forwards;
+    }
+
+    #zeplin-image {
+      width: 100%;
+      filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
+    }
+
+    .animating #zeplin-image {
+      animation: zeplin-loop 4s ease-in-out infinite;
+    }
+
+    @keyframes zeplin-glide {
+      from {
+        left: -200px;
+      }
+
+      to {
+        left: 100vw;
+      }
+    }
+
+    @keyframes zeplin-loop {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      25% {
+        transform: translateY(-40px) rotate(-12deg);
+      }
+
+      50% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      75% {
+        transform: translateY(40px) rotate(12deg);
+      }
+
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    /* Coordinated Link Animation — highlighter pen effect */
+
+    .emphasis-tools.animating-link::before,
+    .emphasis-banking.animating-link::before {
+      content: '';
+      position: absolute;
+      left: -2px;
+      right: -2px;
+      top: 20%;
+      bottom: 0;
+      z-index: -1;
+      border-radius: 3px 4px 2px 5px;
+      transform: skewX(-5deg) rotate(-1.5deg) scaleX(0);
+      transform-origin: left center;
+      will-change: transform, opacity;
+      animation: highlighter-sweep 0.5s 0.1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    }
+
+    .emphasis-banking.animating-link::before {
+      background: rgba(220, 0, 5, 0.18);
+    }
+
+    .emphasis-tools.animating-link::before {
+      background: rgba(246, 152, 51, 0.22);
+    }
+
+    .emphasis-tools.fade-highlight::before,
+    .emphasis-banking.fade-highlight::before {
+      animation: highlighter-fade 1s ease-out forwards;
+    }
+
+    @keyframes highlighter-sweep {
+      0% {
+        transform: skewX(-5deg) rotate(-1.5deg) scaleX(0);
+        opacity: 0.6;
+      }
+
+      40% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: skewX(-5deg) rotate(-1.5deg) scaleX(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes highlighter-fade {
+      0% {
+        transform: skewX(-5deg) rotate(-1.5deg) scaleX(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: skewX(-5deg) rotate(-1.5deg) scaleX(1);
+        opacity: 0;
+      }
+    }
+
+    #banking-container {
+      position: fixed;
+      top: -300px;
+      width: 50px;
+      pointer-events: none;
+      z-index: 1000;
+      visibility: hidden;
+    }
+
+    #money-trail {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    #banking-container.animating {
+      visibility: visible;
+      animation: phone-fall 12s linear forwards;
+    }
+
+    #phone-image {
+      width: 100%;
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+      transform: rotate(-5deg);
+      position: relative;
+      z-index: 2;
+    }
+
+    .coin {
+      position: absolute;
+      width: 50px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .coin.burst {
+      animation: coin-burst 1.5s ease-out forwards;
+    }
+
+    @keyframes phone-fall {
+      0% {
+        top: -300px;
+        transform: translateX(0) rotate(-5deg);
+      }
+
+      50% {
+        transform: translateX(-20px) rotate(5deg);
+      }
+
+      100% {
+        top: 105vh;
+        transform: translateX(0) rotate(-5deg);
+      }
+    }
+
+    @keyframes coin-burst {
+      0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.5) rotate(0deg);
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(var(--dx), var(--dy)) scale(1.2) rotate(var(--dr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>H. Cem Ozturk</h1>
+    <p>
+      Software engineer with 10+ years building iOS and macOS products at scale, from
+      <a class="emphasis emphasis-banking" href="https://www.akbank.com/en" target="_blank"
+        rel="noopener noreferrer">banking apps</a>
+      with 1.5M monthly users to
+      <a class="emphasis emphasis-tools" href="https://zeplin.io" target="_blank" rel="noopener noreferrer">developer
+        tools</a>
+      used by 5M+ people.
+    </p>
+    <nav aria-label="Social links">
+      <a href="https://github.com/hcemozturk" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/hcemozturk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a id="email-link" href="#">Email</a>
+    </nav>
+    <a class="leettrack-footer" href="leettrack/" aria-label="Open LeetTrack page">
+      <span class="leettrack-footer-inner">
+        <span class="leettrack-icon-wrap" aria-hidden="true">
+          <img class="leettrack-icon leettrack-icon-light" src="assets/leettrack/optimized/leettrack-icon-light-216.png"
+            alt="" loading="lazy" />
+          <img class="leettrack-icon leettrack-icon-dark" src="assets/leettrack/optimized/leettrack-icon-dark-216.png"
+            alt="" loading="lazy" />
+        </span>
+        <span><strong>LeetTrack</strong> - Your personal LeetCode companion.</span>
+      </span>
+    </a>
+  </main>
+  <div id="zeplin-container">
+    <img src="assets/zeplin.svg" id="zeplin-image" alt="Zeplin" />
+  </div>
+  <div id="banking-container">
+    <img src="assets/akbank-iphone.png" id="phone-image" alt="Banking Phone" />
+  </div>
+  <div id="money-trail"></div>
+  <script>
+    const emailUser = "hcemozturk+page";
+    const emailDomain = "gmail.com";
+    const email = `${emailUser}@${emailDomain}`;
+    const emailLink = document.getElementById("email-link");
+    emailLink.setAttribute("href", `mailto:${email}`);
+
+    // Zeplin Animation Trigger
+    const zeplin = document.getElementById("zeplin-container");
+    const toolsLink = document.querySelector(".emphasis-tools");
+
+    function triggerZeplin() {
+      zeplin.classList.remove("animating");
+      void zeplin.offsetWidth;
+      zeplin.classList.add("animating");
+
+      setTimeout(() => {
+        toolsLink.classList.remove("animating-link", "fade-highlight");
+        void toolsLink.offsetWidth;
+        toolsLink.classList.add("animating-link");
+      }, 6500);
+
+      // Fade out highlight after zeplin leaves screen
+      setTimeout(() => {
+        toolsLink.classList.add("fade-highlight");
+      }, 15000);
+      setTimeout(() => {
+        toolsLink.classList.remove("animating-link", "fade-highlight");
+      }, 16000);
+    }
+
+    // Banking Animation Trigger
+    const banking = document.getElementById("banking-container");
+    const bankingLink = document.querySelector(".emphasis-banking");
+    const trail = document.getElementById("money-trail");
+    let trailInterval;
+    let bankingLeft = 60; // percent fallback
+
+    function computeBankingLeft() {
+      const mainEl = document.querySelector('main');
+      const rect = mainEl.getBoundingClientRect();
+      const rightEdge = rect.right; // px from viewport left
+      const phoneWidth = 50;
+      const spaceRight = window.innerWidth - rightEdge;
+
+      if (spaceRight >= phoneWidth + 16) {
+        // Enough room: place just right of the text block
+        banking.style.left = `${rightEdge + 16}px`;
+        bankingLeft = null; // pixel mode
+        return rightEdge + 16;
+      } else {
+        // No room: inset from the right edge of the text block
+        const insetX = rect.right - phoneWidth - 8;
+        banking.style.left = `${insetX}px`;
+        bankingLeft = null;
+        return insetX;
+      }
+    }
+
+    function triggerBanking() {
+      banking.classList.remove("animating");
+      void banking.offsetWidth;
+      const phoneLeftPx = computeBankingLeft();
+      banking.classList.add("animating");
+
+      // Clear existing interval if any
+      if (trailInterval) clearInterval(trailInterval);
+
+      let startTime = Date.now();
+      const assets = ['try10.webp', 'try20.webp', 'try50.webp', 'try100.webp'];
+
+      // Start dropping money
+      trailInterval = setInterval(() => {
+        let elapsed = (Date.now() - startTime) / 1000; // seconds
+        if (elapsed > 11) {
+          clearInterval(trailInterval);
+          return;
         }
 
-        .leettrack-icon-dark {
-          display: block;
+        // Spawn a bill at the current phone position
+        const bill = document.createElement('img');
+        const asset = assets[Math.floor(Math.random() * assets.length)];
+        bill.src = `assets/${asset}`;
+        bill.className = 'coin burst';
+
+        // Spawn within phone bounds using computed left position
+        const vHeight = window.innerHeight;
+        const currentTop = -300 + (vHeight + 300) * (elapsed / 12);
+        const spawnX = -35 + Math.random() * 30; // -35–-5px from phone left edge
+
+        bill.style.left = `${phoneLeftPx + spawnX}px`;
+        bill.style.top = `${currentTop + 50}px`;
+
+        // Drift: bias rightward, never exceeds phone left edge
+        const dx = spawnX > 25
+          ? (Math.random() - 0.3) * 50   // right half: can drift both ways
+          : Math.random() * 40;           // left half: only drift right
+        const dy = 20 + Math.random() * 40;
+        const dr = (Math.random() - 0.5) * 180;
+
+        bill.style.setProperty('--dx', `${dx}px`);
+        bill.style.setProperty('--dy', `${dy}px`);
+        bill.style.setProperty('--dr', `${dr}deg`);
+
+        trail.appendChild(bill);
+
+        // Cleanup DOM
+        setTimeout(() => bill.remove(), 2000);
+
+        // Sync link highlight when near
+        if (elapsed > 5.2 && elapsed < 5.4) {
+          bankingLink.classList.remove("animating-link", "fade-highlight");
+          void bankingLink.offsetWidth;
+          bankingLink.classList.add("animating-link");
         }
+      }, 250); // Drop a bill every 250ms
+
+      // Fade out highlight after phone leaves screen
+      setTimeout(() => {
+        bankingLink.classList.add("fade-highlight");
+      }, 12000);
+      setTimeout(() => {
+        bankingLink.classList.remove("animating-link", "fade-highlight");
+      }, 13000);
+    }
+
+    // Master Alternating Trigger (Robust Sync)
+    let animationState = 'zeplin';
+    let zeplinAnimating = false;
+    let bankingAnimating = false;
+    let masterInterval = null;
+
+    function startMasterInterval() {
+      if (masterInterval) clearInterval(masterInterval);
+      masterInterval = setInterval(runNextAnimation, 30000);
+    }
+
+    function runNextAnimation() {
+      if (animationState === 'zeplin') {
+        triggerZeplin();
+        animationState = 'banking';
+      } else {
+        triggerBanking();
+        animationState = 'zeplin';
       }
-    </style>
-  </head>
-  <body>
-    <main>
-      <h1>H. Cem Ozturk</h1>
-      <p>
-        Software engineer with 10+ years building iOS and macOS products at scale, from
-        <a
-          class="emphasis emphasis-banking"
-          href="https://www.akbank.com/en"
-          target="_blank"
-          rel="noopener noreferrer"
-          >banking apps</a
-        >
-        with 1.5M monthly users to
-        <a
-          class="emphasis emphasis-tools"
-          href="https://zeplin.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          >developer tools</a
-        >
-        used by 5M+ people.
-      </p>
-      <nav aria-label="Social links">
-        <a href="https://github.com/hcemozturk" target="_blank" rel="noopener noreferrer"
-          >GitHub</a
-        >
-        <a href="https://www.linkedin.com/in/hcemozturk/" target="_blank" rel="noopener noreferrer"
-          >LinkedIn</a
-        >
-        <a id="email-link" href="#">Email</a>
-      </nav>
-      <a class="leettrack-footer" href="leettrack/" aria-label="Open LeetTrack page">
-        <span class="leettrack-footer-inner">
-          <span class="leettrack-icon-wrap" aria-hidden="true">
-            <img
-              class="leettrack-icon leettrack-icon-light"
-              src="assets/leettrack/optimized/leettrack-icon-light-216.png"
-              alt=""
-              loading="lazy"
-            />
-            <img
-              class="leettrack-icon leettrack-icon-dark"
-              src="assets/leettrack/optimized/leettrack-icon-dark-216.png"
-              alt=""
-              loading="lazy"
-            />
-          </span>
-          <span><strong>LeetTrack</strong> - Your personal LeetCode companion.</span>
-        </span>
-      </a>
-    </main>
-    <script>
-      const emailUser = "hcemozturk+page";
-      const emailDomain = "gmail.com";
-      const email = `${emailUser}@${emailDomain}`;
-      const emailLink = document.getElementById("email-link");
-      emailLink.setAttribute("href", `mailto:${email}`);
-    </script>
-  </body>
+    }
+
+    // Wrap triggers to track animation state
+    const _triggerZeplin = triggerZeplin;
+    triggerZeplin = function () {
+      if (zeplinAnimating) return;
+      zeplinAnimating = true;
+      _triggerZeplin();
+      setTimeout(() => { zeplinAnimating = false; }, 15000);
+    };
+
+    const _triggerBanking = triggerBanking;
+    triggerBanking = function () {
+      if (bankingAnimating) return;
+      bankingAnimating = true;
+      _triggerBanking();
+      setTimeout(() => { bankingAnimating = false; }, 13000);
+    };
+
+    // Hover triggers
+    toolsLink.addEventListener('mouseenter', () => {
+      if (zeplinAnimating) return;
+      triggerZeplin();
+      animationState = 'banking'; // next auto-play will be banking
+      startMasterInterval();      // reset 30s clock from now
+    });
+
+    bankingLink.addEventListener('mouseenter', () => {
+      if (bankingAnimating) return;
+      triggerBanking();
+      animationState = 'zeplin'; // next auto-play will be zeplin
+      startMasterInterval();     // reset 30s clock from now
+    });
+
+    // Start heartbeat every 30s.
+    // T=30: Zeplin, T=60: Banking, T=90: Zeplin...
+    startMasterInterval();
+  </script>
+</body>
+
 </html>
