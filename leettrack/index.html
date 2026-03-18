@@ -230,10 +230,38 @@
         color: var(--muted);
       }
 
-      .coming {
-        margin-top: 0.5rem;
-        color: var(--accent);
-        font-weight: 600;
+      .hero-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-actions {
+        margin-top: 0.8rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .app-store-badge-link {
+        display: inline-block;
+      }
+
+      .app-store-badge-link:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .app-store-badge {
+        width: min(245px, 100%);
+        height: auto;
+        vertical-align: middle;
+        object-fit: contain;
+      }
+
+      .app-store-badge-dark {
+        display: none;
       }
 
       h2 {
@@ -311,10 +339,29 @@
         gap: 0.75rem;
         flex-wrap: wrap;
         justify-content: center;
+        align-items: center;
       }
 
       .legal-links span {
         color: var(--muted);
+      }
+
+      .footer-download {
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #ffffff !important;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .footer-download:hover {
+        filter: brightness(0.95);
+      }
+
+      .footer-download:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
       }
 
       .disclaimer {
@@ -345,12 +392,27 @@
         }
       }
 
+      @media (max-width: 560px) {
+        .hero {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
       @media (prefers-color-scheme: dark) {
         .icon-light {
           display: none;
         }
 
         .icon-dark {
+          display: block;
+        }
+
+        .app-store-badge-light {
+          display: none;
+        }
+
+        .app-store-badge-dark {
           display: block;
         }
       }
@@ -384,10 +446,29 @@
             loading="lazy"
           />
         </div>
-        <div>
+        <div class="hero-copy">
           <h1>LeetTrack</h1>
           <p class="subtitle">LeetCode Widgets &amp; Analytics</p>
-          <div class="coming">Coming soon</div>
+          <div class="hero-actions">
+            <a
+              class="app-store-badge-link"
+              href="https://apps.apple.com/us/app/leetcode-companion-leettrack/id6759523427?itscg=30200&amp;itsct=apps_box_badge&amp;mttnsubad=6759523427"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download LeetTrack on the App Store"
+            >
+              <img
+                class="app-store-badge app-store-badge-light"
+                src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1773792000"
+                alt="Download on the App Store"
+              />
+              <img
+                class="app-store-badge app-store-badge-dark"
+                src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/white/en-us?releaseDate=1773792000"
+                alt="Download on the App Store"
+              />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -428,6 +509,13 @@
 
       <section class="privacy">
         <div class="legal-links">
+          <a
+            class="footer-download"
+            href="https://apps.apple.com/us/app/leetcode-companion-leettrack/id6759523427"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Download</a>
+          <span aria-hidden="true">|</span>
           <a href="mailto:leettrackapp@gmail.com">Contact</a>
           <span aria-hidden="true">|</span>
           <a href="privacy.html">Privacy Policy</a>
