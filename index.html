@@ -1,589 +1,405 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>H. Cem Ozturk</title>
-  <meta name="description"
-    content="Personal website of Cem Ozturk, software engineer with 10+ years building iOS and macOS products at scale." />
-  <style>
-    :root {
-      --bg: #f5f6f7;
-      --text: #111;
-      --muted: #5c5f66;
-      --line: #d9dde3;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
-        "Avenir Next", Avenir, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 55%);
-      color: var(--text);
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-    }
-
-    main {
-      width: min(680px, 92vw);
-      padding: 2.5rem 1.25rem;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 5vw, 3rem);
-      letter-spacing: -0.03em;
-    }
-
-    p {
-      margin: 0.9rem 0 0;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 1.05rem;
-    }
-
-    nav {
-      margin-top: 1.7rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid var(--line);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    a {
-      color: var(--text);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-
-    a:hover {
-      text-decoration-thickness: 2px;
-    }
-
-    .emphasis {
-      position: relative;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .emphasis-banking {
-      color: #dc0005;
-    }
-
-    .emphasis-tools {
-      color: #f69833;
-    }
-
-    .app-links {
-      margin-top: 1.8rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--line);
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .app-link {
-      color: var(--muted);
-      font-size: 0.95rem;
-      text-decoration: none;
-      display: block;
-    }
-
-    .app-link-inner {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      transition: transform 180ms ease, color 180ms ease;
-    }
-
-    .app-link:hover .app-link-inner,
-    .app-link:focus-visible .app-link-inner {
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
-    .leettrack-icon-wrap,
-    .headway-icon-wrap {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
-      overflow: hidden;
-      flex: 0 0 auto;
-    }
-
-    .leettrack-icon-wrap {
-      background: #eceff3;
-    }
-
-    .headway-icon-wrap {
-      background: #e9f2ed;
-    }
-
-    .leettrack-icon {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .leettrack-icon-dark,
-    .headway-icon-dark {
-      display: none;
-    }
-
-    /* Zeplin Animation */
-    #zeplin-container {
-      position: fixed;
-      top: 20%;
-      left: -200px;
-      width: 60px;
-      pointer-events: none;
-      z-index: 1000;
-      visibility: hidden;
-      transition: visibility 0s 15s;
-    }
-
-    #zeplin-container.animating {
-      visibility: visible;
-      transition: none;
-      animation: zeplin-glide 15s linear forwards;
-    }
-
-    #zeplin-image {
-      width: 100%;
-      filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
-    }
-
-    .animating #zeplin-image {
-      animation: zeplin-loop 4s ease-in-out infinite;
-    }
-
-    @keyframes zeplin-glide {
-      from {
-        left: -200px;
-      }
-
-      to {
-        left: 100vw;
-      }
-    }
-
-    @keyframes zeplin-loop {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-
-      25% {
-        transform: translateY(-40px) rotate(-12deg);
-      }
-
-      50% {
-        transform: translateY(0) rotate(0deg);
-      }
-
-      75% {
-        transform: translateY(40px) rotate(12deg);
-      }
-
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
-    }
-
-    /* Coordinated Link Animation — highlighter pen effect */
-
-    .emphasis-tools.animating-link::before,
-    .emphasis-banking.animating-link::before {
-      content: '';
-      position: absolute;
-      left: -2px;
-      right: -2px;
-      top: 20%;
-      bottom: 0;
-      z-index: -1;
-      border-radius: 3px 4px 2px 5px;
-      transform: skewX(-5deg) rotate(-1.5deg) scaleX(0);
-      transform-origin: left center;
-      will-change: transform, opacity;
-      animation: highlighter-sweep 0.5s 0.1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-    }
-
-    .emphasis-banking.animating-link::before {
-      background: rgba(220, 0, 5, 0.18);
-    }
-
-    .emphasis-tools.animating-link::before {
-      background: rgba(246, 152, 51, 0.22);
-    }
-
-    .emphasis-tools.fade-highlight::before,
-    .emphasis-banking.fade-highlight::before {
-      animation: highlighter-fade 1s ease-out forwards;
-    }
-
-    @keyframes highlighter-sweep {
-      0% {
-        transform: skewX(-5deg) rotate(-1.5deg) scaleX(0);
-        opacity: 0.6;
-      }
-
-      40% {
-        opacity: 1;
-      }
-
-      100% {
-        transform: skewX(-5deg) rotate(-1.5deg) scaleX(1);
-        opacity: 1;
-      }
-    }
-
-    @keyframes highlighter-fade {
-      0% {
-        transform: skewX(-5deg) rotate(-1.5deg) scaleX(1);
-        opacity: 1;
-      }
-
-      100% {
-        transform: skewX(-5deg) rotate(-1.5deg) scaleX(1);
-        opacity: 0;
-      }
-    }
-
-    #banking-container {
-      position: fixed;
-      top: -300px;
-      width: 50px;
-      pointer-events: none;
-      z-index: 1000;
-      visibility: hidden;
-    }
-
-    #money-trail {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 999;
-    }
-
-    #banking-container.animating {
-      visibility: visible;
-      animation: phone-fall 12s linear forwards;
-    }
-
-    #phone-image {
-      width: 100%;
-      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
-      transform: rotate(-5deg);
-      position: relative;
-      z-index: 2;
-    }
-
-    .coin {
-      position: absolute;
-      width: 50px;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .coin.burst {
-      animation: coin-burst 1.5s ease-out forwards;
-    }
-
-    @keyframes phone-fall {
-      0% {
-        top: -300px;
-        transform: translateX(0) rotate(-5deg);
-      }
-
-      50% {
-        transform: translateX(-20px) rotate(5deg);
-      }
-
-      100% {
-        top: 105vh;
-        transform: translateX(0) rotate(-5deg);
-      }
-    }
-
-    @keyframes coin-burst {
-      0% {
-        opacity: 0;
-        transform: translate(0, 0) scale(0.5) rotate(0deg);
-      }
-
-      20% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-        transform: translate(var(--dx), var(--dy)) scale(1.2) rotate(var(--dr));
-      }
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .leettrack-icon-light {
-        display: none;
-      }
-
-      .leettrack-icon-dark {
-        display: block;
-      }
-
-      .headway-icon-light {
-        display: none;
-      }
-
-      .headway-icon-dark {
-        display: block;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <main>
-    <h1>H. Cem Ozturk</h1>
-    <p>
-      Software engineer with 10+ years building iOS and macOS products at scale, from
-      <a class="emphasis emphasis-banking" href="https://www.akbank.com/en" target="_blank"
-        rel="noopener noreferrer">banking apps</a>
-      with 1.5M monthly users to
-      <a class="emphasis emphasis-tools" href="https://zeplin.io" target="_blank" rel="noopener noreferrer">developer
-        tools</a>
-      used by 5M+ people.
-    </p>
-    <nav aria-label="Social links">
-      <a href="https://github.com/hcemozturk" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/in/hcemozturk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a id="email-link" href="#">Email</a>
-    </nav>
-    <section class="app-links" aria-label="App pages">
-      <a class="app-link" href="leettrack/" aria-label="Open LeetTrack page">
-        <span class="app-link-inner">
-          <span class="leettrack-icon-wrap" aria-hidden="true">
-            <img class="leettrack-icon leettrack-icon-light" src="assets/leettrack/optimized/leettrack-icon-light-216.png"
-              alt="" loading="lazy" />
-            <img class="leettrack-icon leettrack-icon-dark" src="assets/leettrack/optimized/leettrack-icon-dark-216.png"
-              alt="" loading="lazy" />
-          </span>
-          <span><strong>LeetTrack</strong> - Your personal LeetCode companion.</span>
-        </span>
-      </a>
-      <a class="app-link" href="headway/" aria-label="Open Headway page">
-        <span class="app-link-inner">
-          <span class="headway-icon-wrap" aria-hidden="true">
-            <img class="leettrack-icon headway-icon-light" src="assets/leettrack/optimized/headway-icon-light-216.png"
-              alt="" loading="lazy" />
-            <img class="leettrack-icon headway-icon-dark" src="assets/leettrack/optimized/headway-icon-dark-216.png"
-              alt="" loading="lazy" />
-          </span>
-          <span><strong>Headway</strong> - Focus timer with app blocking and ambient soundscapes.</span>
-        </span>
-      </a>
-    </section>
-  </main>
-  <div id="zeplin-container">
-    <img src="assets/zeplin.svg" id="zeplin-image" alt="Zeplin" />
-  </div>
-  <div id="banking-container">
-    <img src="assets/akbank-iphone.png" id="phone-image" alt="Banking Phone" />
-  </div>
-  <div id="money-trail"></div>
+  <meta name="description" content="A visual timeline of products, native Apple apps, and engineering systems built by H. Cem Öztürk over 14 years." />
+  <meta name="author" content="H. Cem Öztürk" />
+  <link rel="canonical" href="https://hcemozturk.com/" />
   <script>
-    const emailUser = "hcemozturk+page";
-    const emailDomain = "gmail.com";
-    const email = `${emailUser}@${emailDomain}`;
-    const emailLink = document.getElementById("email-link");
-    emailLink.setAttribute("href", `mailto:${email}`);
-
-    // Zeplin Animation Trigger
-    const zeplin = document.getElementById("zeplin-container");
-    const toolsLink = document.querySelector(".emphasis-tools");
-
-    function triggerZeplin() {
-      zeplin.classList.remove("animating");
-      void zeplin.offsetWidth;
-      zeplin.classList.add("animating");
-
-      setTimeout(() => {
-        toolsLink.classList.remove("animating-link", "fade-highlight");
-        void toolsLink.offsetWidth;
-        toolsLink.classList.add("animating-link");
-      }, 6500);
-
-      // Fade out highlight after zeplin leaves screen
-      setTimeout(() => {
-        toolsLink.classList.add("fade-highlight");
-      }, 15000);
-      setTimeout(() => {
-        toolsLink.classList.remove("animating-link", "fade-highlight");
-      }, 16000);
-    }
-
-    // Banking Animation Trigger
-    const banking = document.getElementById("banking-container");
-    const bankingLink = document.querySelector(".emphasis-banking");
-    const trail = document.getElementById("money-trail");
-    let trailInterval;
-    let bankingLeft = 60; // percent fallback
-
-    function computeBankingLeft() {
-      const mainEl = document.querySelector('main');
-      const rect = mainEl.getBoundingClientRect();
-      const rightEdge = rect.right; // px from viewport left
-      const phoneWidth = 50;
-      const spaceRight = window.innerWidth - rightEdge;
-
-      if (spaceRight >= phoneWidth + 16) {
-        // Enough room: place just right of the text block
-        banking.style.left = `${rightEdge + 16}px`;
-        bankingLeft = null; // pixel mode
-        return rightEdge + 16;
-      } else {
-        // No room: inset from the right edge of the text block
-        const insetX = rect.right - phoneWidth - 8;
-        banking.style.left = `${insetX}px`;
-        bankingLeft = null;
-        return insetX;
+    // This page is an introduction first: do not restore an old timeline position.
+    // Explicit hash links still open their requested product section.
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    if (!window.location.hash) window.scrollTo(0, 0);
+    window.addEventListener("pageshow", () => {
+      if (!window.location.hash) {
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(() => window.scrollTo(0, 0));
+        });
       }
-    }
-
-    function triggerBanking() {
-      banking.classList.remove("animating");
-      void banking.offsetWidth;
-      const phoneLeftPx = computeBankingLeft();
-      banking.classList.add("animating");
-
-      // Clear existing interval if any
-      if (trailInterval) clearInterval(trailInterval);
-
-      let startTime = Date.now();
-      const assets = ['try10.webp', 'try20.webp', 'try50.webp', 'try100.webp'];
-
-      // Start dropping money
-      trailInterval = setInterval(() => {
-        let elapsed = (Date.now() - startTime) / 1000; // seconds
-        if (elapsed > 11) {
-          clearInterval(trailInterval);
-          return;
-        }
-
-        // Spawn a bill at the current phone position
-        const bill = document.createElement('img');
-        const asset = assets[Math.floor(Math.random() * assets.length)];
-        bill.src = `assets/${asset}`;
-        bill.className = 'coin burst';
-
-        // Spawn within phone bounds using computed left position
-        const vHeight = window.innerHeight;
-        const currentTop = -300 + (vHeight + 300) * (elapsed / 12);
-        const spawnX = -35 + Math.random() * 30; // -35–-5px from phone left edge
-
-        bill.style.left = `${phoneLeftPx + spawnX}px`;
-        bill.style.top = `${currentTop + 50}px`;
-
-        // Drift: bias rightward, never exceeds phone left edge
-        const dx = spawnX > 25
-          ? (Math.random() - 0.3) * 50   // right half: can drift both ways
-          : Math.random() * 40;           // left half: only drift right
-        const dy = 20 + Math.random() * 40;
-        const dr = (Math.random() - 0.5) * 180;
-
-        bill.style.setProperty('--dx', `${dx}px`);
-        bill.style.setProperty('--dy', `${dy}px`);
-        bill.style.setProperty('--dr', `${dr}deg`);
-
-        trail.appendChild(bill);
-
-        // Cleanup DOM
-        setTimeout(() => bill.remove(), 2000);
-
-        // Sync link highlight when near
-        if (elapsed > 5.2 && elapsed < 5.4) {
-          bankingLink.classList.remove("animating-link", "fade-highlight");
-          void bankingLink.offsetWidth;
-          bankingLink.classList.add("animating-link");
-        }
-      }, 250); // Drop a bill every 250ms
-
-      // Fade out highlight after phone leaves screen
-      setTimeout(() => {
-        bankingLink.classList.add("fade-highlight");
-      }, 12000);
-      setTimeout(() => {
-        bankingLink.classList.remove("animating-link", "fade-highlight");
-      }, 13000);
-    }
-
-    // Master Alternating Trigger (Robust Sync)
-    let animationState = 'zeplin';
-    let zeplinAnimating = false;
-    let bankingAnimating = false;
-    let masterInterval = null;
-
-    function startMasterInterval() {
-      if (masterInterval) clearInterval(masterInterval);
-      masterInterval = setInterval(runNextAnimation, 30000);
-    }
-
-    function runNextAnimation() {
-      if (animationState === 'zeplin') {
-        triggerZeplin();
-        animationState = 'banking';
-      } else {
-        triggerBanking();
-        animationState = 'zeplin';
-      }
-    }
-
-    // Wrap triggers to track animation state
-    const _triggerZeplin = triggerZeplin;
-    triggerZeplin = function () {
-      if (zeplinAnimating) return;
-      zeplinAnimating = true;
-      _triggerZeplin();
-      setTimeout(() => { zeplinAnimating = false; }, 15000);
-    };
-
-    const _triggerBanking = triggerBanking;
-    triggerBanking = function () {
-      if (bankingAnimating) return;
-      bankingAnimating = true;
-      _triggerBanking();
-      setTimeout(() => { bankingAnimating = false; }, 13000);
-    };
-
-    // Hover triggers
-    toolsLink.addEventListener('mouseenter', () => {
-      if (zeplinAnimating) return;
-      triggerZeplin();
-      animationState = 'banking'; // next auto-play will be banking
-      startMasterInterval();      // reset 30s clock from now
     });
-
-    bankingLink.addEventListener('mouseenter', () => {
-      if (bankingAnimating) return;
-      triggerBanking();
-      animationState = 'zeplin'; // next auto-play will be zeplin
-      startMasterInterval();     // reset 30s clock from now
-    });
-
-    // Start heartbeat every 30s.
-    // T=30: Zeplin, T=60: Banking, T=90: Zeplin...
-    startMasterInterval();
   </script>
-</body>
 
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/leettrack/optimized/leettrack-icon-light-216.png" />
+  <link rel="apple-touch-icon" href="assets/leettrack/optimized/leettrack-icon-light-216.png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/portfolio/portfolio.css" />
+</head>
+<body>
+  <!-- Header / Intro Banner -->
+  <header class="timeline-header">
+    <div class="header-inner">
+      <div class="top-bar">
+        <div class="header-actions">
+          <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
+            <span class="theme-text-light">Dark</span>
+            <span class="theme-text-dark">Light</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-block">
+        <h1 class="hero-name">H. Cem Öztürk</h1>
+        <p class="hero-bio">
+          14 years of building native iOS and macOS products&mdash;from a design delivery platform serving <strong>5M+</strong> designers and developers to high-volume banking apps with <strong>1.5M</strong> MAU. I also build apps for an audience of one: myself.
+        </p>
+        <div class="hero-contact-row">
+          <a href="#" id="emailLink" class="contact-link">Email</a>
+          <span class="sep-dot">&bull;</span>
+          <a href="https://linkedin.com/in/hcemozturk" target="_blank" rel="noopener noreferrer" class="contact-link">LinkedIn</a>
+          <span class="sep-dot">&bull;</span>
+          <a href="https://github.com/hcemozturk" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRODUCTS TIMELINE CONTAINER -->
+  <main class="timeline-feed">
+    <!-- 1. BOOKSHELF -->
+    <section class="product-row theme-bookshelf" id="bookshelf">
+      <a class="metro-station" href="#bookshelf" aria-label="Jump to Bookshelf" title="Bookshelf"></a>
+      <div class="row-inner">
+        <div class="content-col">
+          <div class="tag-row">
+            <span class="timestamp">2026 &bull; Independent</span>
+            <span class="category-badge">iOS</span>
+          </div>
+          <h2 class="product-title">Bookshelf</h2>
+          <p class="product-tagline">An app that keeps your books front and center on your phone.</p>
+
+          <p class="product-description">A personal reading companion that keeps current and recently finished books visible through widgets&mdash;like books left on a nightstand or table. I built it because ebooks disappear from view too easily.</p>
+
+          <!--
+          <div class="links-row">
+            <a href="bookshelf/" class="row-action-link">Landing page &rarr;</a>
+          </div>
+          -->
+        </div>
+
+        <div class="showcase-col">
+          <div class="showcase-deck has-screenshots">
+            <div class="deck-card hero-icon-card" title="Bookshelf App Icon">
+              <img src="assets/bookshelf-icon.png" alt="Bookshelf App Icon" class="icon-img" />
+            </div>
+            <div class="deck-card shot-card depth-1">
+              <img src="assets/bookshelf/1_bookshelf.png" alt="Bookshelf Currently Reading" loading="lazy" />
+            </div>
+            <div class="deck-card shot-card depth-2">
+              <img src="assets/bookshelf/2_book_detail.png" alt="Book Details Screen" loading="lazy" />
+            </div>
+            <div class="deck-card shot-card depth-3">
+              <img src="assets/bookshelf/3_insights.png" alt="Bookshelf Reading Insights" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. WOBBIT -->
+    <section class="product-row theme-wobbit" id="wobbit">
+      <a class="metro-station" href="#wobbit" aria-label="Jump to Wobbit" title="Wobbit"></a>
+      <div class="row-inner">
+        <div class="content-col">
+          <div class="tag-row">
+            <span class="timestamp">2026 &bull; Independent</span>
+            <span class="category-badge">macOS</span>
+          </div>
+          <h2 class="product-title">Wobbit</h2>
+          <p class="product-tagline">A macOS companion for keeping an eye on your coding agents.</p>
+
+          <p class="product-description">Ever come back to your coding agent after a successful doomscrolling session, only to find it stuck on a permission request? Want a way to check on your agents at a glance? Well, there&rsquo;s an app for that. Wobbit keeps every session visible in a floating view and lets you respond when an agent needs attention.</p>
+
+          <div class="links-row">
+            <a href="https://github.com/hcemozturk/wobbit-releases/releases/latest/download/Wobbit.zip" target="_blank" rel="noopener noreferrer" class="row-action-link">Download &rarr;</a>
+          </div>
+        </div>
+
+        <div class="showcase-col">
+          <div class="showcase-deck wobbit-video-deck">
+            <div class="deck-card hero-icon-card" title="Wobbit App Icon">
+              <img src="assets/wobbit-icon.png" alt="Wobbit App Icon" class="icon-img" />
+            </div>
+            <video class="wobbit-demo-video" muted loop playsinline preload="none" poster="assets/wobbit/wobbits-playing-poster.png" aria-label="Codex and Claude Code Wobbits working side by side">
+              <source src="assets/wobbit/wobbits-playing.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HEADWAY -->
+    <section class="product-row theme-headway" id="headway">
+      <a class="metro-station" href="#headway" aria-label="Jump to Headway" title="Headway"></a>
+      <div class="row-inner">
+        <div class="content-col">
+          <div class="tag-row">
+            <span class="timestamp">2026 &bull; Independent</span>
+            <span class="category-badge">iOS</span>
+          </div>
+          <h2 class="product-title">Headway</h2>
+          <p class="product-tagline">Focus timer with app blocking and stamp rewards.</p>
+
+          <p class="product-description">A focus timer that blocks distracting apps during deep work sessions and rewards completed sessions with collectible stamps.</p>
+
+          <div class="links-row">
+            <a href="headway/" class="row-action-link">Landing page &rarr;</a>
+          </div>
+        </div>
+
+        <div class="showcase-col">
+          <div class="showcase-deck has-screenshots">
+            <div class="deck-card hero-icon-card" title="Headway App Icon">
+              <img src="assets/leettrack/optimized/headway-icon-light-216.png" alt="Headway App Icon" class="icon-img icon-light" />
+              <img src="assets/leettrack/optimized/headway-icon-dark-216.png" alt="Headway App Icon" class="icon-img icon-dark" />
+            </div>
+            <div class="deck-card shot-card depth-1">
+              <img src="assets/headway/screenshots/headway_timer.png" alt="Headway Focus Timer Dial" loading="lazy" />
+            </div>
+            <div class="deck-card shot-card depth-2">
+              <img src="assets/headway/screenshots/headway_stamps.png" alt="Headway Stamp Passport Collection" loading="lazy" />
+            </div>
+            <div class="deck-card shot-card depth-3">
+              <img src="assets/headway/screenshots/headway_insights.png" alt="Headway Focus Insights" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. LEETTRACK -->
+    <section class="product-row theme-leettrack" id="leettrack">
+      <a class="metro-station" href="#leettrack" aria-label="Jump to LeetTrack" title="LeetTrack"></a>
+      <div class="row-inner">
+        <div class="content-col">
+          <div class="tag-row">
+            <span class="timestamp">2026 &bull; Independent</span>
+            <span class="category-badge">iOS</span>
+          </div>
+          <h2 class="product-title">LeetTrack</h2>
+          <p class="product-tagline">Your personal LeetCode companion.</p>
+
+          <p class="product-description">A LeetCode companion app with customizable profile dashboards, reminders, and Home and Lock Screen widgets.</p>
+
+          <div class="links-row">
+            <a href="https://apps.apple.com/us/app/leetcode-companion-leettrack/id6759523427" target="_blank" rel="noopener noreferrer" class="row-action-link">App Store &rarr;</a>
+            <a href="leettrack/" class="row-action-link">Landing page &rarr;</a>
+          </div>
+        </div>
+
+        <div class="showcase-col">
+          <div class="showcase-deck has-screenshots">
+            <div class="deck-card hero-icon-card" title="LeetTrack App Icon">
+              <img src="assets/leettrack/optimized/leettrack-icon-light-216.png" alt="LeetTrack App Icon" class="icon-img icon-light" />
+              <img src="assets/leettrack/optimized/leettrack-icon-dark-216.png" alt="LeetTrack App Icon" class="icon-img icon-dark" />
+            </div>
+            <div class="deck-card shot-card depth-1">
+              <img src="leettrack/assets/screenshot-1.jpg" alt="LeetTrack Dashboard" loading="lazy" />
+            </div>
+            <div class="deck-card shot-card depth-2">
+              <img src="leettrack/assets/screenshot-3.jpg" alt="LeetTrack Widgets" loading="lazy" />
+            </div>
+            <div class="deck-card shot-card depth-3">
+              <img src="leettrack/assets/screenshot-4.jpg" alt="LeetTrack Customization" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ASORESEARCH -->
+    <section class="product-row theme-aso" id="asoresearch">
+      <a class="metro-station" href="#asoresearch" aria-label="Jump to ASOResearch" title="ASOResearch"></a>
+      <div class="row-inner">
+        <div class="content-col">
+          <div class="tag-row">
+            <span class="timestamp">2026 &bull; Independent</span>
+            <span class="category-badge">macOS</span>
+          </div>
+          <h2 class="product-title">ASOResearch</h2>
+          <p class="product-tagline">An App Store optimization and competitor-ranking research tool.</p>
+
+          <p class="product-description">An App Store research tool for tracking keyword rankings, finding new keywords, and understanding how competing apps position themselves.</p>
+
+          <div class="links-row naming-suggestion-row">
+            <span>Not the best name.</span>
+            <a class="row-action-link" href="mailto:hi@hcemozturk.com?subject=A%20better%20name%20for%20ASOResearch">Send suggestions &rarr;</a>
+          </div>
+        </div>
+
+        <div class="showcase-col">
+          <div class="showcase-deck aso-screenshot-deck">
+            <div class="deck-card hero-icon-card" title="ASOResearch App Icon">
+              <img src="assets/asoresearch-icon.png" alt="ASOResearch App Icon" class="icon-img" />
+            </div>
+            <div class="deck-card aso-screenshot-card">
+              <img src="assets/asoresearch/keyword-rankings.png" alt="ASOResearch keyword rankings and competing apps" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ZEPLIN MACOS APP -->
+    <section class="product-row theme-zeplin" id="zeplin">
+      <a class="metro-station" href="#zeplin" aria-label="Jump to Zeplin" title="Zeplin"></a>
+      <div class="row-inner">
+        <div class="content-col">
+          <div class="tag-row">
+            <span class="timestamp">2019 &ndash; 2025</span>
+            <span class="category-badge">macOS</span>
+          </div>
+          <h2 class="product-title">Zeplin</h2>
+          <p class="product-tagline">A design delivery platform for product teams.</p>
+
+          <p class="product-description">I had the opportunity to work on a product I used every day, helping serve more than five million designers and developers in the process.</p>
+
+          <div class="links-row">
+            <a href="https://zeplin.io" target="_blank" rel="noopener noreferrer" class="row-action-link">zeplin.io &rarr;</a>
+          </div>
+        </div>
+
+        <div class="showcase-col">
+          <div class="showcase-deck zeplin-screenshot-deck">
+            <div class="deck-card hero-icon-card zeplin-brand-card" title="Zeplin App Icon">
+              <img src="assets/zeplin.svg" alt="Zeplin Icon" class="icon-svg" />
+            </div>
+            <div class="deck-card zeplin-shot depth-1">
+              <img src="assets/zeplin/workspace.png" alt="Zeplin workspace project overview" loading="lazy" />
+            </div>
+            <div class="deck-card zeplin-shot depth-2">
+              <img src="assets/zeplin/baklava.png" alt="Baklava design inspected in Zeplin" loading="lazy" />
+            </div>
+            <div class="deck-card zeplin-shot depth-3">
+              <img src="assets/zeplin/styleguide.png" alt="Design-system styleguide in Zeplin" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. AKBANK MOBILE -->
+    <section class="product-row theme-akbank" id="akbank-mobile">
+      <a class="metro-station" href="#akbank-mobile" aria-label="Jump to Akbank Mobile" title="Akbank Mobile"></a>
+      <span class="akbank-through-line" aria-hidden="true"></span>
+      <svg class="akbank-route-svg" aria-hidden="true" focusable="false">
+        <path class="akbank-route-path"></path>
+      </svg>
+      <div class="row-inner">
+        <div class="content-col">
+          <div class="tag-row">
+            <span class="timestamp">2013 &ndash; 2019</span>
+            <span class="category-badge">iOS</span>
+          </div>
+          <h2 class="product-title">Akbank Mobile</h2>
+          <p class="product-tagline">The mobile app for Turkey&rsquo;s third-largest bank, used by millions.</p>
+
+          <p class="product-description">I spent six years building Akbank&rsquo;s mobile banking app (twice), while also helping build Jüzdan from the ground up and developing features for the Android app.</p>
+
+          <div class="links-row">
+            <a href="https://www.akbank.com/en" target="_blank" rel="noopener noreferrer" class="row-action-link">akbank.com &rarr;</a>
+            <a href="https://apps.apple.com/tr/app/akbank-mobile/id560516360" target="_blank" rel="noopener noreferrer" class="row-action-link">App Store &rarr;</a>
+          </div>
+        </div>
+
+        <div class="showcase-col">
+          <div class="showcase-deck has-screenshots akbank-screenshot-deck">
+            <div class="deck-card hero-icon-card akbank-brand-card" title="Akbank Mobile App Icon">
+              <img src="assets/akbank-mobil-icon.png" alt="Akbank Mobile App Icon" class="icon-img" />
+            </div>
+            <div class="deck-card shot-card depth-1">
+              <img src="assets/akbank/dashboard.webp" alt="Akbank Mobile dashboard" loading="lazy" />
+            </div>
+            <div class="deck-card shot-card depth-2">
+              <img src="assets/akbank/cards.webp" alt="Cards in Akbank Mobile" loading="lazy" />
+            </div>
+            <div class="deck-card shot-card depth-3">
+              <img src="assets/akbank/investments.webp" alt="Investment suggestions in Akbank Mobile" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="akbank-branch" aria-label="Other Akbank products">
+        <article class="branch-product branch-juzdan">
+          <span class="branch-station" aria-hidden="true"></span>
+          <div class="branch-face">
+            <div class="branch-product-head">
+              <div class="branch-icon-wrap">
+                <img src="assets/juzdan-icon.webp" alt="" class="branch-icon-img" />
+              </div>
+              <div>
+                <span class="branch-date">2017 &ndash; 2018</span>
+                <h3>Jüzdan</h3>
+              </div>
+            </div>
+            <p>A location-based campaign and digital wallet app. I helped build it with the original team.</p>
+            <a href="https://apps.apple.com/tr/app/juzdan/id1270161188" target="_blank" rel="noopener noreferrer" class="row-action-link branch-action-link">App Store &rarr;</a>
+          </div>
+        </article>
+
+        <article class="branch-product branch-nfc">
+          <span class="branch-station" aria-hidden="true"></span>
+          <div class="branch-face">
+            <div class="branch-product-head">
+              <div class="branch-icon-wrap">
+                <img src="assets/akbank-direkt-icon.png" alt="" class="branch-icon-img" />
+              </div>
+              <div>
+                <span class="branch-date">2015 &ndash; 2016</span>
+                <h3>Akbank Mobile for Android</h3>
+              </div>
+            </div>
+            <p>I implemented various features, including a contactless payment experience.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.akbank.android.apps.akbank_direkt" target="_blank" rel="noopener noreferrer" class="row-action-link branch-action-link">Google Play &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 8. EARLY WORK -->
+    <section class="product-row theme-early-work" id="early-work">
+      <a class="metro-station" href="#early-work" aria-label="Jump to Where I started" title="Where I started"></a>
+      <div class="row-inner early-work-inner">
+        <div class="content-col">
+          <div class="tag-row">
+            <span class="timestamp">Before 2013</span>
+            <span class="category-badge">iOS &bull; Android &bull; Unity</span>
+          </div>
+          <h2 class="product-title">Where I started</h2>
+          <p class="product-tagline">Interactive exhibitions, consumer Android apps, and an early smartwatch.</p>
+          <p class="product-description">Before specializing in Apple-platform products, I built interactive exhibitions and game-like information systems for bespoke hardware at <a href="https://www.reo-tek.com" target="_blank" rel="noopener noreferrer">Reo-Tek</a>, developed consumer Android apps at the newly founded agency <a href="https://mobilerise.com" target="_blank" rel="noopener noreferrer">Mobilerise</a>, and even created apps for the <a href="https://en.wikipedia.org/wiki/WIMM_One" target="_blank" rel="noopener noreferrer">WIMM One</a> smartwatch developer kit.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="timeline-tail-space" role="region" aria-labelledby="finaleTitle">
+      <div class="finale-copy">
+        <p class="finale-thanks">Thanks for making it all the way down.</p>
+        <h2 id="finaleTitle">Meet Kiki, my favorite code reviewer.</h2>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Minimal Footer -->
+  <footer class="timeline-footer">
+    <div class="footer-kiki-scene" aria-hidden="true">
+      <img class="footer-kiki" src="assets/kiki-looking-up.png" alt="" />
+      <span class="kiki-bubble">I have notes.</span>
+    </div>
+    <div class="footer-inner">
+      <p>&copy; 2026 H. Cem Öztürk</p>
+    </div>
+  </footer>
+
+  <!-- Toast for clipboard copy -->
+  <div class="toast-popup" id="toastPopup" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="assets/portfolio/portfolio.js"></script>
+</body>
 </html>
