@@ -1,0 +1,156 @@
+:root {
+  --paper: #f5f0e6;
+  --ink: #231e19;
+  --muted: #776f66;
+  --line: rgba(55, 44, 34, 0.14);
+  --surface: rgba(255, 253, 248, 0.82);
+  --purple: #5b46a8;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 90% 0%, rgba(209, 138, 54, 0.14), transparent 28rem),
+    var(--paper);
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  width: min(820px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 34px 0 72px;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+.top-link {
+  color: var(--muted);
+  font-size: 0.93rem;
+  text-decoration: none;
+}
+
+.top-link:hover {
+  color: var(--ink);
+}
+
+article {
+  margin-top: 30px;
+  padding: clamp(26px, 5vw, 58px);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: 0 20px 50px rgba(60, 45, 32, 0.06);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--purple);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Iowan Old Style, Baskerville, "Times New Roman", serif;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.55rem, 7vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.updated {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.summary {
+  margin: 34px 0;
+  padding: 20px 22px;
+  border-left: 4px solid var(--purple);
+  border-radius: 0 12px 12px 0;
+  background: rgba(91, 70, 168, 0.07);
+}
+
+.summary p {
+  margin: 0;
+}
+
+h2 {
+  margin: 2.35rem 0 0.65rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+h2:first-of-type {
+  border-top: 0;
+}
+
+h3 {
+  margin: 1.4rem 0 0.35rem;
+  font-size: 1.18rem;
+  font-weight: 600;
+}
+
+p,
+li {
+  line-height: 1.68;
+}
+
+ul {
+  margin: 0.65rem 0;
+  padding-left: 1.25rem;
+}
+
+li + li {
+  margin-top: 0.5rem;
+}
+
+.legal-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(91, 70, 168, 0.55);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+@media (max-width: 560px) {
+  main {
+    width: min(100% - 24px, 820px);
+    padding-top: 24px;
+  }
+
+  article {
+    border-radius: 18px;
+  }
+}
