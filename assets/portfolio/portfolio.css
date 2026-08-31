@@ -774,8 +774,8 @@ body {
   top: 0;
   right: 0;
   width: min(300px, calc(100% - 74px));
-  aspect-ratio: 612 / 568;
-  object-fit: cover;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
   display: block;
   border: 1px solid var(--border-card);
   border-radius: 18px;
