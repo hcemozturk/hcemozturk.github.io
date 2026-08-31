@@ -34,6 +34,8 @@
     <div class="header-inner">
       <div class="top-bar">
         <div class="header-actions">
+          <a href="reading/" class="header-nav-link">Reading</a>
+          <span class="sep-dot" aria-hidden="true">&bull;</span>
           <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
             <span class="theme-text-light">Dark</span>
             <span class="theme-text-dark">Light</span>
@@ -76,6 +78,20 @@
           <div class="links-row">
             <a href="bookshelf/" class="row-action-link">Landing page &rarr;</a>
           </div>
+
+          <a class="portfolio-reading-widget" href="reading/" aria-label="See what H. Cem Öztürk is reading">
+            <span class="portfolio-reading-covers" data-personal-reading-covers aria-hidden="true">
+              <span class="personal-reading-cover personal-reading-cover-placeholder"></span>
+              <span class="personal-reading-cover personal-reading-cover-placeholder"></span>
+              <span class="personal-reading-cover personal-reading-cover-placeholder"></span>
+            </span>
+            <span class="portfolio-reading-copy">
+              <strong>
+                <span>Cem&rsquo;s books</span>
+                <span aria-hidden="true">&rarr;</span>
+              </strong>
+            </span>
+          </a>
         </div>
 
         <div class="showcase-col">
@@ -399,6 +415,8 @@
   <div class="toast-popup" id="toastPopup" role="status" aria-live="polite"></div>
 
   <!-- Scripts -->
+  <script src="assets/reading/reading-data.js"></script>
+  <script src="assets/reading/bookshelf-teaser.js"></script>
   <script src="assets/portfolio/portfolio.js"></script>
 </body>
 </html>
