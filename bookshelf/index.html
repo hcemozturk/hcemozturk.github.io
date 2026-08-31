@@ -88,7 +88,7 @@
         grid-template-columns: minmax(0, 0.92fr) minmax(430px, 1.08fr);
         align-items: center;
         gap: clamp(32px, 7vw, 92px);
-        padding: 54px 0 86px;
+        padding: 54px 0 144px;
       }
 
       .brand-row {
@@ -260,6 +260,112 @@
         width: 100%;
         height: auto;
         border-radius: 39px;
+      }
+
+      .personal-reading-teaser {
+        position: absolute;
+        right: auto;
+        bottom: -112px;
+        left: 50%;
+        z-index: 4;
+        min-height: 84px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 22px 10px 13px;
+        border: 1px solid var(--line);
+        border-radius: 17px;
+        color: var(--ink);
+        background: rgba(255, 253, 248, 0.94);
+        box-shadow: 0 16px 38px rgba(54, 40, 28, 0.16);
+        text-decoration: none;
+        transform: translateX(-50%);
+        transition: box-shadow 180ms ease, transform 180ms ease;
+      }
+
+      .personal-reading-teaser:hover {
+        box-shadow: 0 19px 44px rgba(54, 40, 28, 0.2);
+        transform: translate(-50%, -2px);
+      }
+
+      .personal-reading-covers {
+        width: 76px;
+        height: 66px;
+        display: flex;
+        align-items: flex-end;
+        flex: 0 0 auto;
+        padding-left: 5px;
+      }
+
+      .personal-reading-cover {
+        width: 42px;
+        height: 60px;
+        border: 1px solid rgba(35, 30, 25, 0.15);
+        border-radius: 3px;
+        object-fit: cover;
+        background: var(--paper-deep);
+        box-shadow: 0 7px 16px rgba(42, 30, 22, 0.2);
+        transform-origin: bottom center;
+        transition: transform 180ms ease;
+      }
+
+      .personal-reading-cover + .personal-reading-cover {
+        margin-left: -25px;
+      }
+
+      .personal-reading-cover:nth-child(1) {
+        transform: rotate(-8deg);
+      }
+
+      .personal-reading-cover:nth-child(2) {
+        transform: translateY(-4px);
+      }
+
+      .personal-reading-cover:nth-child(3) {
+        transform: rotate(8deg);
+      }
+
+      .personal-reading-teaser:hover .personal-reading-cover:nth-child(1),
+      .personal-reading-teaser:focus-visible .personal-reading-cover:nth-child(1) {
+        transform: translateX(-5px) rotate(-13deg);
+      }
+
+      .personal-reading-teaser:hover .personal-reading-cover:nth-child(2),
+      .personal-reading-teaser:focus-visible .personal-reading-cover:nth-child(2) {
+        transform: translateY(-8px);
+      }
+
+      .personal-reading-teaser:hover .personal-reading-cover:nth-child(3),
+      .personal-reading-teaser:focus-visible .personal-reading-cover:nth-child(3) {
+        transform: translateX(5px) rotate(13deg);
+      }
+
+      .personal-reading-cover-placeholder:nth-child(1) {
+        background: var(--rust);
+      }
+
+      .personal-reading-cover-placeholder:nth-child(2) {
+        background: var(--purple);
+      }
+
+      .personal-reading-cover-placeholder:nth-child(3) {
+        background: var(--green);
+      }
+
+      .personal-reading-copy {
+        min-width: 0;
+      }
+
+      .personal-reading-copy strong {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+        gap: 4px;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        white-space: nowrap;
       }
 
       .chapter {
@@ -442,6 +548,37 @@
         border-radius: 4px;
       }
 
+      @media (min-width: 821px) {
+        .personal-reading-teaser {
+          bottom: -100px;
+          width: 152px;
+          min-height: 76px;
+          gap: 8px;
+          padding: 8px 10px 8px 8px;
+        }
+
+        .personal-reading-covers {
+          width: 58px;
+          height: 58px;
+          padding-left: 4px;
+        }
+
+        .personal-reading-cover {
+          width: 36px;
+          height: 52px;
+        }
+
+        .personal-reading-copy {
+          width: 66px;
+        }
+
+        .personal-reading-copy strong {
+          font-size: 0.78rem;
+          line-height: 1.18;
+          white-space: normal;
+        }
+      }
+
       @media (max-width: 820px) {
         .hero {
           min-height: auto;
@@ -496,6 +633,11 @@
 
         .visual {
           min-height: 550px;
+        }
+
+        .personal-reading-teaser {
+          width: min(286px, calc(100% - 6px));
+          padding-right: 16px;
         }
 
         .chapter {
@@ -669,6 +811,19 @@
           <div class="phone">
             <img src="../assets/bookshelf/shelf.png" alt="Bookshelf showing current and recently read books" />
           </div>
+          <a class="personal-reading-teaser" href="../reading/" aria-label="See what H. Cem Öztürk is reading">
+            <span class="personal-reading-covers" data-personal-reading-covers aria-hidden="true">
+              <span class="personal-reading-cover personal-reading-cover-placeholder"></span>
+              <span class="personal-reading-cover personal-reading-cover-placeholder"></span>
+              <span class="personal-reading-cover personal-reading-cover-placeholder"></span>
+            </span>
+            <span class="personal-reading-copy">
+              <strong>
+                <span>Cem&rsquo;s books</span>
+                <span aria-hidden="true">&rarr;</span>
+              </strong>
+            </span>
+          </a>
         </div>
       </section>
 
@@ -911,5 +1066,7 @@
       showGallerySlide(0);
       updateGalleryProgressControl();
     </script>
+    <script src="../assets/reading/reading-data.js"></script>
+    <script src="../assets/reading/bookshelf-teaser.js"></script>
   </body>
 </html>

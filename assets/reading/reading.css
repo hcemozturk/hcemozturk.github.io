@@ -1,0 +1,413 @@
+:root {
+  --reading-paper: #f5f0e6;
+  --reading-paper-deep: #e9e1d3;
+  --reading-ink: #231e19;
+  --reading-muted: #776f66;
+  --reading-line: rgba(55, 44, 34, 0.13);
+  --reading-surface: rgba(255, 253, 248, 0.76);
+  --reading-purple: #5b46a8;
+  --reading-rust: #a84e32;
+  --reading-star: #b66b1f;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--reading-ink);
+  background:
+    radial-gradient(circle at 88% 4%, rgba(209, 138, 54, 0.16), transparent 29rem),
+    radial-gradient(circle at 4% 42%, rgba(91, 70, 168, 0.09), transparent 27rem),
+    var(--reading-paper);
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.reading-shell {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.reading-topbar {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.reading-nav-link {
+  color: var(--reading-muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.reading-nav-link:hover {
+  color: var(--reading-ink);
+}
+
+.reading-nav-link:last-child {
+  padding-bottom: 3px;
+  border-bottom: 1px solid currentColor;
+}
+
+.reading-hero {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 0 46px;
+}
+
+.reading-section-eyebrow {
+  margin: 0;
+  color: var(--reading-purple);
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.reading-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  font-family: Iowan Old Style, Baskerville, "Times New Roman", serif;
+  font-size: clamp(3.25rem, 7.5vw, 5.7rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.reading-section {
+  padding: 66px 0;
+  border-top: 1px solid var(--reading-line);
+}
+
+.reading-section-current {
+  background: linear-gradient(90deg, transparent, rgba(255, 253, 248, 0.26), transparent);
+}
+
+.reading-section-read {
+  padding-bottom: 108px;
+}
+
+.reading-section-heading,
+.reading-year-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.reading-section-eyebrow {
+  color: var(--reading-rust);
+}
+
+.reading-section-read .reading-section-eyebrow {
+  color: var(--reading-purple);
+}
+
+.reading-section-heading h2 {
+  margin: 6px 0 0;
+  font-family: Iowan Old Style, Baskerville, "Times New Roman", serif;
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.current-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.current-book {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  border: 1px solid var(--reading-line);
+  border-radius: 20px;
+  background: var(--reading-surface);
+  box-shadow: 0 15px 36px rgba(60, 45, 32, 0.055);
+}
+
+.book-cover-frame {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--reading-paper-deep);
+  box-shadow: 0 10px 22px rgba(44, 32, 23, 0.16);
+}
+
+.book-cover,
+.book-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.book-cover-placeholder {
+  display: grid;
+  place-items: center;
+  color: rgba(35, 30, 25, 0.64);
+  background: linear-gradient(145deg, #e8dfd0, #c8b7a0);
+  font-family: Iowan Old Style, Baskerville, "Times New Roman", serif;
+  font-size: 2rem;
+}
+
+.book-copy {
+  min-width: 0;
+}
+
+.book-title {
+  margin: 0;
+  font-family: Iowan Old Style, Baskerville, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.current-book .book-title {
+  font-size: 1.23rem;
+  line-height: 1.22;
+}
+
+.book-author,
+.book-date {
+  margin: 6px 0 0;
+  color: var(--reading-muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.book-date {
+  margin-top: 12px;
+  font-size: 0.7rem;
+}
+
+.reading-year {
+  margin-top: 54px;
+}
+
+.reading-year + .reading-year {
+  margin-top: 76px;
+}
+
+.reading-year-heading {
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--reading-line);
+}
+
+.reading-year-heading h3 {
+  margin: 0;
+  font-family: Iowan Old Style, Baskerville, "Times New Roman", serif;
+  font-size: 1.42rem;
+  font-weight: 400;
+}
+
+.read-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(18px, 2.7vw, 32px);
+  margin-top: 26px;
+}
+
+.read-book {
+  min-width: 0;
+}
+
+.read-book .book-title {
+  margin-top: 15px;
+  font-size: 0.94rem;
+  line-height: 1.25;
+}
+
+.read-book .book-author {
+  font-size: 0.72rem;
+}
+
+.book-rating {
+  display: inline-flex;
+  margin-top: 8px;
+  font-size: 0.76rem;
+  letter-spacing: 0.035em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.book-rating-filled {
+  color: var(--reading-star);
+}
+
+.book-rating-empty {
+  color: color-mix(in srgb, var(--reading-muted) 36%, transparent);
+}
+
+.reading-status {
+  min-height: 210px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 40px 20px;
+  border-top: 1px solid var(--reading-line);
+  color: var(--reading-muted);
+  text-align: center;
+}
+
+.reading-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 36px;
+  padding-bottom: 48px;
+  border-top: 1px solid var(--reading-line);
+  color: var(--reading-muted);
+  font-size: 0.86rem;
+}
+
+.reading-footer a {
+  text-decoration: none;
+}
+
+.reading-footer a:hover {
+  color: var(--reading-ink);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(91, 70, 168, 0.55);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+@media (max-width: 860px) {
+  .read-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .reading-shell {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .reading-topbar {
+    min-height: 60px;
+  }
+
+  .reading-hero {
+    min-height: 180px;
+    padding: 28px 0 42px;
+  }
+
+  .reading-hero h1 {
+    font-size: clamp(3rem, 15vw, 4.4rem);
+  }
+
+  .reading-section {
+    padding: 56px 0;
+  }
+
+  .current-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .read-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 440px) {
+  .reading-nav-link {
+    font-size: 0.78rem;
+  }
+
+  .reading-section-heading {
+    align-items: flex-start;
+  }
+
+  .current-book {
+    grid-template-columns: 86px minmax(0, 1fr);
+    padding: 14px;
+  }
+
+  .current-book .book-title {
+    font-size: 1.05rem;
+  }
+
+  .read-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 18px;
+  }
+
+  .reading-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --reading-paper: #181512;
+    --reading-paper-deep: #28221d;
+    --reading-ink: #eee8df;
+    --reading-muted: #b9afa4;
+    --reading-line: rgba(255, 245, 232, 0.12);
+    --reading-surface: rgba(47, 40, 34, 0.78);
+    --reading-purple: #aa98e6;
+    --reading-rust: #df8c72;
+    --reading-star: #e3a44f;
+    color-scheme: dark;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 88% 4%, rgba(209, 138, 54, 0.08), transparent 29rem),
+      radial-gradient(circle at 4% 42%, rgba(91, 70, 168, 0.1), transparent 27rem),
+      var(--reading-paper);
+  }
+
+  .reading-section-current {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.018), transparent);
+  }
+
+  .book-cover-placeholder {
+    color: rgba(238, 232, 223, 0.72);
+    background: linear-gradient(145deg, #463a31, #2a2420);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
