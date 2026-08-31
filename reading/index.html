@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading — H. Cem Öztürk</title>
+    <meta name="description" content="The books H. Cem Öztürk is currently reading and has finished." />
+    <meta name="author" content="H. Cem Öztürk" />
+    <meta name="theme-color" content="#f5f0e6" />
+    <link rel="canonical" href="https://hcemozturk.com/reading/" />
+    <link rel="icon" type="image/png" href="../assets/bookshelf-icon.png" />
+    <link rel="apple-touch-icon" href="../assets/bookshelf-icon.png" />
+    <link rel="stylesheet" href="../assets/reading/reading.css" />
+  </head>
+  <body>
+    <header class="reading-shell reading-topbar">
+      <a class="reading-nav-link" href="../">&larr; H. Cem Öztürk</a>
+      <a class="reading-nav-link" href="../bookshelf/">Bookshelf app &nearr;</a>
+    </header>
+
+    <main>
+      <section class="reading-shell reading-hero">
+        <h1>Books I&rsquo;ve read.</h1>
+      </section>
+
+      <section class="reading-section reading-section-current" data-current-section hidden>
+        <div class="reading-shell">
+          <div class="reading-section-heading">
+            <div>
+              <p class="reading-section-eyebrow" data-place-copy>On my nightstand</p>
+              <h2>Currently reading</h2>
+            </div>
+          </div>
+          <div class="current-grid" data-current-grid></div>
+        </div>
+      </section>
+
+      <section class="reading-section reading-section-read" data-read-section hidden>
+        <div class="reading-shell">
+          <div class="reading-section-heading">
+            <div>
+              <p class="reading-section-eyebrow">On my bookshelf</p>
+              <h2>Read</h2>
+            </div>
+          </div>
+          <div data-read-years></div>
+        </div>
+      </section>
+
+      <p class="reading-status" role="status" data-reading-status>Getting the books from the shelf&hellip;</p>
+    </main>
+
+    <footer class="reading-shell reading-footer">
+      <span>&copy; 2026 H. Cem Öztürk</span>
+      <a href="../bookshelf/">About the Bookshelf app &rarr;</a>
+    </footer>
+
+    <script src="../assets/reading/reading-data.js"></script>
+    <script src="../assets/reading/reading-page.js"></script>
+  </body>
+</html>
